@@ -3,7 +3,7 @@ Clara
 
 Clara is the Ceddy's LARAvel framework. It's a [Laravel](https://laravel.com/) framework with an entity generator and some dependencies.
 
-You can create a usable back office fastly. This framework is pretty usefull my boy.
+You can create a usable back office fastly. This framework is pretty usefull my boy show some love
 
 ## Installation
 
