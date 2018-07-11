@@ -15,19 +15,17 @@
 Route::get('login', 'Admin\UserController@login');
 Route::post('authenticate', 'Admin\UserController@authenticate');
 Route::get('logout', 'Admin\UserController@logout');
+Route::get('/', 'NewsController@index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 //Admin
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'access'], function()
 {
     Route::get('/', 'HomeController@index')->name('admin');
-    
+
     //App Controllers
     $aConfig = config('clara.route.admin');
-    
+
     foreach ($aConfig as $sRoute => $sName)
     {
         Route::resource($sRoute, $sName.'Controller', ['names' => 'admin.'.$sRoute]);
