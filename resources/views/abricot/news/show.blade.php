@@ -105,7 +105,7 @@
 							<div class="col-md-12">
 								<div class="blog-entry">
 									<div class="blog-img blog-detail">
-										<img src="images/blog-4.jpg" class="img-responsive" alt="html5 bootstrap template">
+										<img src="{{ asset('img/abricot/blog-4.jpg') }}" class="img-responsive" alt="html5 bootstrap template">
 									</div>
 									<div class="desc">
 										<p class="meta">
@@ -128,7 +128,7 @@
 							<div class="col-md-12">
 								<h2 class="heading-2">23 Comments</h2>
 								<div class="review">
-						   		<div class="user-img" style="background-image: url(images/person1.jpg)"></div>
+						   		<div class="user-img" style="background-image: url({{ asset('img/abricot/person1.jpg') }})"></div>
 						   		<div class="desc">
 						   			<h4>
 						   				<span class="text-left">Jacob Webb</span>
@@ -141,7 +141,7 @@
 						   		</div>
 						   	</div>
 						   	<div class="review">
-						   		<div class="user-img" style="background-image: url(images/person2.jpg)"></div>
+						   		<div class="user-img" style="background-image: url({{ asset('img/abricot/person2.jpg') }})"></div>
 						   		<div class="desc">
 						   			<h4>
 						   				<span class="text-left">Jacob Webb</span>
@@ -154,7 +154,7 @@
 						   		</div>
 						   	</div>
 						   	<div class="review">
-						   		<div class="user-img" style="background-image: url(images/person3.jpg)"></div>
+						   		<div class="user-img" style="background-image: url({{ asset('img/abricot/person3.jpg') }})"></div>
 						   		<div class="desc">
 						   			<h4>
 						   				<span class="text-left">Jacob Webb</span>
@@ -235,7 +235,7 @@
 							<div class="side">
 								<h2 class="sidebar-heading">Recent Blog</h2>
 								<div class="f-blog">
-									<a href="blog.html" class="blog-img" style="background-image: url(images/blog-1.jpg);">
+									<a href="blog.html" class="blog-img" style="background-image: url({{ asset('img/abricot/blog-1.jpg') }});">
 									</a>
 									<div class="desc">
 										<h3><a href="blog.html">Be a designer</a></h3>
@@ -243,7 +243,7 @@
 									</div>
 								</div>
 								<div class="f-blog">
-									<a href="blog.html" class="blog-img" style="background-image: url(images/blog-2.jpg);">
+									<a href="blog.html" class="blog-img" style="background-image: url({{ asset('img/abricot/blog-2.jpg') }});">
 									</a>
 									<div class="desc">
 										<h3><a href="blog.html">How to build website</a></h3>
@@ -251,7 +251,7 @@
 									</div>
 								</div>
 								<div class="f-blog">
-									<a href="blog.html" class="blog-img" style="background-image: url(images/blog-3.jpg);">
+									<a href="blog.html" class="blog-img" style="background-image: url({{ asset('img/abricot/blog-3.jpg') }});">
 									</a>
 									<div class="desc">
 										<h3><a href="blog.html">Create website</a></h3>
@@ -262,21 +262,21 @@
 							<div class="side">
 								<h2 class="sidebar-heading">Instagram</h2>
 								<div class="instagram-entry">
-									<a href="#" class="instagram text-center" style="background-image: url(images/gallery-1.jpg);">
+									<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-1.jpg') }});">
 									</a>
-									<a href="#" class="instagram text-center" style="background-image: url(images/gallery-2.jpg);">
+									<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-2.jpg') }});">
 									</a>
-									<a href="#" class="instagram text-center" style="background-image: url(images/gallery-3.jpg);">
+									<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-3.jpg') }});">
 									</a>
-									<a href="#" class="instagram text-center" style="background-image: url(images/gallery-4.jpg);">
+									<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-4.jpg') }});">
 									</a>
-									<a href="#" class="instagram text-center" style="background-image: url(images/gallery-5.jpg);">
+									<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-5.jpg') }});">
 									</a>
-									<a href="#" class="instagram text-center" style="background-image: url(images/gallery-6.jpg);">
+									<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-6.jpg') }});">
 									</a>
-									<a href="#" class="instagram text-center" style="background-image: url(images/gallery-7.jpg);">
+									<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-7.jpg') }});">
 									</a>
-									<a href="#" class="instagram text-center" style="background-image: url(images/gallery-8.jpg);">
+									<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-8.jpg') }});">
 									</a>
 								</div>
 							</div>
@@ -300,21 +300,21 @@
 			</div>
 			<div class="row">
 				<div class="instagram-entry">
-					<a href="#" class="instagram text-center" style="background-image: url(images/gallery-1.jpg);">
+					<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-1.jpg') }});">
 					</a>
-					<a href="#" class="instagram text-center" style="background-image: url(images/gallery-2.jpg);">
+					<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-2.jpg') }});">
 					</a>
-					<a href="#" class="instagram text-center" style="background-image: url(images/gallery-3.jpg);">
+					<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-3.jpg') }});">
 					</a>
-					<a href="#" class="instagram text-center" style="background-image: url(images/gallery-4.jpg);">
+					<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-4.jpg') }});">
 					</a>
-					<a href="#" class="instagram text-center" style="background-image: url(images/gallery-5.jpg);">
+					<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-5.jpg') }});">
 					</a>
-					<a href="#" class="instagram text-center" style="background-image: url(images/gallery-6.jpg);">
+					<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-6.jpg') }});">
 					</a>
-					<a href="#" class="instagram text-center" style="background-image: url(images/gallery-7.jpg);">
+					<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-7.jpg') }});">
 					</a>
-					<a href="#" class="instagram text-center" style="background-image: url(images/gallery-8.jpg);">
+					<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-8.jpg') }});">
 					</a>
 				</div>
 			</div>
@@ -339,7 +339,7 @@
 					<div class="col-md-3">
 						<h2>Recent Post</h2>
 						<div class="f-blog">
-							<a href="blog.html" class="blog-img" style="background-image: url(images/blog-1.jpg);">
+							<a href="blog.html" class="blog-img" style="background-image: url({{ asset('img/abricot/blog-1.jpg') }});">
 							</a>
 							<div class="desc">
 								<h3><a href="blog.html">Be a designer</a></h3>
@@ -347,7 +347,7 @@
 							</div>
 						</div>
 						<div class="f-blog">
-							<a href="blog.html" class="blog-img" style="background-image: url(images/blog-2.jpg);">
+							<a href="blog.html" class="blog-img" style="background-image: url({{ asset('img/abricot/blog-2.jpg') }});">
 							</a>
 							<div class="desc">
 								<h3><a href="blog.html">How to build website</a></h3>
@@ -355,7 +355,7 @@
 							</div>
 						</div>
 						<div class="f-blog">
-							<a href="blog.html" class="blog-img" style="background-image: url(images/blog-3.jpg);">
+							<a href="blog.html" class="blog-img" style="background-image: url(*/blog-3.jpg') }});">
 							</a>
 							<div class="desc">
 								<h3><a href="blog.html">Create website</a></h3>

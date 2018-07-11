@@ -87,7 +87,7 @@
 		<aside id="colorlib-hero">
 			<div class="flexslider">
 				<ul class="slides">
-			   	<li style="background-image: url(images/img_bg_1.jpg);">
+			   	<li style="background-image: url(img/abricot/img_bg_1.jpg);">
 			   		<div class="overlay"></div>
 			   		<div class="container">
 			   			<div class="row">
@@ -106,7 +106,7 @@
 				   		</div>
 			   		</div>
 			   	</li>
-			   	<li style="background-image: url(images/img_bg_2.jpg);">
+			   	<li style="background-image: url(img/abricot/img_bg_2.jpg);">
 			   		<div class="overlay"></div>
 			   		<div class="container">
 			   			<div class="row">
@@ -125,7 +125,7 @@
 				   		</div>
 			   		</div>
 			   	</li>
-			   	<li style="background-image: url(images/img_bg_3.jpg);">
+			   	<li style="background-image: url(img/abricot/img_bg_3.jpg);">
 			   		<div class="overlay"></div>
 			   		<div class="container">
 			   			<div class="row">
@@ -144,7 +144,7 @@
 				   		</div>
 			   		</div>
 			   	</li>
-			   	<li style="background-image: url(images/img_bg_4.jpg);">
+			   	<li style="background-image: url(img/abricot/img_bg_4.jpg);">
 			   		<div class="overlay"></div>
 			   		<div class="container">
 			   			<div class="row">
@@ -173,7 +173,7 @@
 					<div class="col-md-4">
 						<div class="blog-entry">
 							<div class="blog-img">
-								<a href="blog.html"><img src="images/blog-1.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
+								<a href="blog.html"><img src="img/abricot/blog-1.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
 							</div>
 							<div class="desc">
 								<p class="meta">
@@ -189,7 +189,7 @@
 					<div class="col-md-4">
 						<div class="blog-entry">
 							<div class="blog-img">
-								<a href="blog.html"><img src="images/blog-2.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
+								<a href="blog.html"><img src="img/abricot/blog-2.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
 							</div>
 							<div class="desc">
 								<p class="meta">
@@ -207,10 +207,10 @@
 							<div class="blog-slider">
 								<div class="owl-carousel">
 									<div class="item">
-										<a href="blog.html" class="image-popup-link"><img src="images/blog-3.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
+										<a href="blog.html" class="image-popup-link"><img src="img/abricot/blog-3.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
 									</div>
 									<div class="item">
-										<a href="blog.html" class="image-popup-link"><img src="images/blog-4.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
+										<a href="blog.html" class="image-popup-link"><img src="img/abricot/blog-4.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
 									</div>
 								</div>
 							</div>
@@ -230,7 +230,7 @@
 					<div class="col-md-4">
 						<div class="blog-entry">
 							<div class="blog-img">
-								<a href="blog.html"><img src="images/blog-4.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
+								<a href="blog.html"><img src="img/abricot/blog-4.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
 							</div>
 							<div class="desc">
 								<p class="meta">
@@ -246,7 +246,7 @@
 					<div class="col-md-4">
 						<div class="blog-entry">
 							<div class="blog-img">
-								<a href="blog.html"><img src="images/blog-5.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
+								<a href="blog.html"><img src="img/abricot/blog-5.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
 							</div>
 							<div class="desc">
 								<p class="meta">
@@ -262,7 +262,7 @@
 					<div class="col-md-4">
 						<div class="blog-entry">
 							<div class="blog-img">
-								<a href="blog.html"><img src="images/blog-6.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
+								<a href="blog.html"><img src="img/abricot/blog-6.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
 							</div>
 							<div class="desc">
 								<p class="meta">
@@ -280,7 +280,7 @@
 					<div class="col-md-8">
 						<div class="blog-entry">
 							<div class="blog-img">
-								<div class="video colorlib-video" style="background-image: url(images/blog-8.jpg);">
+								<div class="video colorlib-video" style="background-image: url(img/abricot/blog-8.jpg);">
 									<a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo"><i class="icon-play"></i></a>
 									<div class="overlay"></div>
 								</div>
@@ -299,7 +299,7 @@
 					<div class="col-md-4">
 						<div class="blog-entry">
 							<div class="blog-img">
-								<a href="blog.html"><img src="images/blog-7.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
+								<a href="blog.html"><img src="img/abricot/blog-7.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
 							</div>
 							<div class="desc">
 								<p class="meta">
@@ -317,7 +317,7 @@
 					<div class="col-md-4">
 						<div class="blog-entry">
 							<div class="blog-img">
-								<a href="blog.html"><img src="images/blog-9.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
+								<a href="blog.html"><img src="img/abricot/blog-9.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
 							</div>
 							<div class="desc">
 								<p class="meta">
@@ -333,7 +333,7 @@
 					<div class="col-md-4">
 						<div class="blog-entry">
 							<div class="blog-img">
-								<a href="blog.html"><img src="images/blog-10.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
+								<a href="blog.html"><img src="img/abricot/blog-10.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
 							</div>
 							<div class="desc">
 								<p class="meta">
@@ -349,7 +349,7 @@
 					<div class="col-md-4">
 						<div class="blog-entry">
 							<div class="blog-img">
-								<a href="blog.html"><img src="images/blog-11.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
+								<a href="blog.html"><img src="img/abricot/blog-11.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
 							</div>
 							<div class="desc">
 								<p class="meta">
@@ -367,7 +367,7 @@
 					<div class="col-md-4">
 						<div class="blog-entry">
 							<div class="blog-img">
-								<a href="blog.html"><img src="images/blog-12.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
+								<a href="blog.html"><img src="img/abricot/blog-12.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
 							</div>
 							<div class="desc">
 								<p class="meta">
@@ -383,7 +383,7 @@
 					<div class="col-md-8">
 						<div class="blog-entry">
 							<div class="blog-img">
-								<a href="blog.html"><img src="images/blog-13.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
+								<a href="blog.html"><img src="img/abricot/blog-13.jpg" class="img-responsive" alt="html5 bootstrap template"></a>
 							</div>
 							<div class="desc">
 								<p class="meta">
@@ -420,21 +420,21 @@
 			</div>
 			<div class="row">
 				<div class="instagram-entry">
-					<a href="#" class="instagram text-center" style="background-image: url(images/gallery-1.jpg);">
+					<a href="#" class="instagram text-center" style="background-image: url(img/abricot/gallery-1.jpg);">
 					</a>
-					<a href="#" class="instagram text-center" style="background-image: url(images/gallery-2.jpg);">
+					<a href="#" class="instagram text-center" style="background-image: url(img/abricot/gallery-2.jpg);">
 					</a>
-					<a href="#" class="instagram text-center" style="background-image: url(images/gallery-3.jpg);">
+					<a href="#" class="instagram text-center" style="background-image: url(img/abricot/gallery-3.jpg);">
 					</a>
-					<a href="#" class="instagram text-center" style="background-image: url(images/gallery-4.jpg);">
+					<a href="#" class="instagram text-center" style="background-image: url(img/abricot/gallery-4.jpg);">
 					</a>
-					<a href="#" class="instagram text-center" style="background-image: url(images/gallery-5.jpg);">
+					<a href="#" class="instagram text-center" style="background-image: url(img/abricot/gallery-5.jpg);">
 					</a>
-					<a href="#" class="instagram text-center" style="background-image: url(images/gallery-6.jpg);">
+					<a href="#" class="instagram text-center" style="background-image: url(img/abricot/gallery-6.jpg);">
 					</a>
-					<a href="#" class="instagram text-center" style="background-image: url(images/gallery-7.jpg);">
+					<a href="#" class="instagram text-center" style="background-image: url(img/abricot/gallery-7.jpg);">
 					</a>
-					<a href="#" class="instagram text-center" style="background-image: url(images/gallery-8.jpg);">
+					<a href="#" class="instagram text-center" style="background-image: url(img/abricot/gallery-8.jpg);">
 					</a>
 				</div>
 			</div>
@@ -459,7 +459,7 @@
 					<div class="col-md-3">
 						<h2>Recent Post</h2>
 						<div class="f-blog">
-							<a href="blog.html" class="blog-img" style="background-image: url(images/blog-1.jpg);">
+							<a href="blog.html" class="blog-img" style="background-image: url(img/abricot/blog-1.jpg);">
 							</a>
 							<div class="desc">
 								<h3><a href="blog.html">Be a designer</a></h3>
@@ -467,7 +467,7 @@
 							</div>
 						</div>
 						<div class="f-blog">
-							<a href="blog.html" class="blog-img" style="background-image: url(images/blog-2.jpg);">
+							<a href="blog.html" class="blog-img" style="background-image: url(img/abricot/blog-2.jpg);">
 							</a>
 							<div class="desc">
 								<h3><a href="blog.html">How to build website</a></h3>
@@ -475,7 +475,7 @@
 							</div>
 						</div>
 						<div class="f-blog">
-							<a href="blog.html" class="blog-img" style="background-image: url(images/blog-3.jpg);">
+							<a href="blog.html" class="blog-img" style="background-image: url(img/abricot/blog-3.jpg);">
 							</a>
 							<div class="desc">
 								<h3><a href="blog.html">Create website</a></h3>

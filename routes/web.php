@@ -16,6 +16,7 @@ Route::get('login', 'Admin\UserController@login');
 Route::post('authenticate', 'Admin\UserController@authenticate');
 Route::get('logout', 'Admin\UserController@logout');
 Route::get('/', 'NewsController@index');
+Route::get('news/{slug}', 'NewsController@show');
 
 
 //Admin

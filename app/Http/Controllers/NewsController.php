@@ -10,4 +10,10 @@ class NewsController extends Controller
     {
         return view('abricot/main');
     }
+
+
+    public function show()
+    {
+        return view('abricot/news/show');
+    }
 }
