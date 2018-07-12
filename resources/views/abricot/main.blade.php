@@ -3,7 +3,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Stuff Template</title>
+	<title>Votre Blog</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
@@ -64,7 +64,7 @@
 						</div>
 						<div class="col-xs-10 text-right menu-1">
 							<ul>
-								<li class="active"><a href="index.html">Home</a></li>
+								<li class="active"><a href="index.html">Accueil</a></li>
 								<li class="has-dropdown">
 									<a href="blog.html">Blog</a>
 									<ul class="dropdown">
@@ -412,38 +412,12 @@
 			</div>
 		</div>
 
-		<div id="colorlib-instagram">
-			<div class="row">
-				<div class="col-md-12 col-md-offset-0 colorlib-heading text-center">
-					<h2>Instagram</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="instagram-entry">
-					<a href="#" class="instagram text-center" style="background-image: url(img/abricot/gallery-1.jpg);">
-					</a>
-					<a href="#" class="instagram text-center" style="background-image: url(img/abricot/gallery-2.jpg);">
-					</a>
-					<a href="#" class="instagram text-center" style="background-image: url(img/abricot/gallery-3.jpg);">
-					</a>
-					<a href="#" class="instagram text-center" style="background-image: url(img/abricot/gallery-4.jpg);">
-					</a>
-					<a href="#" class="instagram text-center" style="background-image: url(img/abricot/gallery-5.jpg);">
-					</a>
-					<a href="#" class="instagram text-center" style="background-image: url(img/abricot/gallery-6.jpg);">
-					</a>
-					<a href="#" class="instagram text-center" style="background-image: url(img/abricot/gallery-7.jpg);">
-					</a>
-					<a href="#" class="instagram text-center" style="background-image: url(img/abricot/gallery-8.jpg);">
-					</a>
-				</div>
-			</div>
-		</div>
+
 		<footer id="colorlib-footer" role="contentinfo">
 			<div class="container">
 				<div class="row row-pb-md">
 					<div class="col-md-3">
-						<h2>Navigational</h2>
+						<h2>Menu</h2>
 						<p>
 							<ul class="colorlib-footer-links">
 								<li><a href="#"><i class="icon-check"></i> Home</a></li>
@@ -457,7 +431,7 @@
 						</p>
 					</div>
 					<div class="col-md-3">
-						<h2>Recent Post</h2>
+						<h2>Derniers articles</h2>
 						<div class="f-blog">
 							<a href="blog.html" class="blog-img" style="background-image: url(img/abricot/blog-1.jpg);">
 							</a>
@@ -484,7 +458,7 @@
 						</div>
 					</div>
 					<div class="col-md-3">
-						<h2>Archive</h2>
+						<h2>Archives</h2>
 						<p>
 							<ul class="colorlib-footer-links">
 								<li><a href="#"><i class="icon-check"></i> February 2018</a></li>
@@ -497,7 +471,7 @@
 						</p>
 					</div>
 					<div class="col-md-3">
-						<h2>Tags</h2>
+						<h2>Etiquettes</h2>
 						<p class="tags">
 							<span><a href="#"><i class="icon-tag"></i> Modeling</a></span>
 							<span><a href="#"><i class="icon-tag"></i> Fashion</a></span>
@@ -525,9 +499,9 @@
 					<div class="col-md-12">
 						<p>
 							<small class="block"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Blog réalisé avec <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></small>
-							<small class="block">Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
+
 						</p>
 					</div>
 				</div>
