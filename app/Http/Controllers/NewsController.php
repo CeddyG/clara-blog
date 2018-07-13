@@ -8,7 +8,7 @@ class NewsController extends Controller
 {
     public function index()
     {
-        return view('abricot/main');
+        return view('abricot/news/index');
     }
 
 
