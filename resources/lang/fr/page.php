@@ -14,8 +14,8 @@ return [
     'page' => 'Page',
     'fk_page_category' => 'Catégorie',
     'fk_users' => 'Utilisateur',
+    'title_page' => 'Titre',
     'url_page' => 'Url',
-    'name_page' => 'Nom',
     'created_at' => 'Created at',
     'updated_at' => 'Updated at'
 ];

@@ -43,6 +43,7 @@
                             {!! BootForm::open()->action( route('admin.page.store') )->post() !!}
                         @endif
 
+                        {!! BootForm::text(trans('page.title_page'), 'title_page') !!}
                         
                         @if(isset($oItem))
                             {!! BootForm::select(trans('page-category.page_category'), 'fk_page_category')
@@ -64,7 +65,6 @@
                         @endif
 
                         {!! BootForm::text(trans('page.url_page'), 'url_page') !!}
-                        {!! BootForm::text(trans('page.name_page'), 'name_page') !!}
 
                         {!! BootForm::submit('Envoyer', 'btn-primary')->addClass('pull-right') !!}
 

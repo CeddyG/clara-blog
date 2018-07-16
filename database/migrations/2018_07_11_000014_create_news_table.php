@@ -26,7 +26,8 @@ class CreateNewsTable extends Migration
             $table->integer('id_news', true);
             $table->integer('fk_news_category');
             $table->unsignedInteger('fk_users');
-            $table->string('title_new', 90)->nullable();
+            $table->string('title_news', 90)->nullable();
+            $table->string('url_news')->nullable();
             $table->text('text_news')->nullable()->default(null);
             $table->string('url_image_news')->nullable()->default(null);
 

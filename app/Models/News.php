@@ -20,7 +20,8 @@ class News extends Model
     protected $fillable = [
         'fk_news_category',
 		'fk_users',
-		'title_new',
+		'title_news',
+		'url_news',
 		'text_news',
 		'url_image_news'
     ];
@@ -34,6 +35,11 @@ class News extends Model
     public function users()
     {
         return $this->belongsTo('App\Models\Users', 'fk_users');
+    }
+
+    public function tag()
+    {
+        return $this->belongsToMany('App\Models\Tag', 'news_tag', 'fk_news', 'fk_tag');
     }
 
 

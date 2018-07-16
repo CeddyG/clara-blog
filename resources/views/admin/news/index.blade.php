@@ -25,7 +25,7 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>{{ __('news.title_new') }}</th>					<th>{{ __('news.url_image_news') }}</th>
+                    <th>{{ __('news.title_news') }}</th>					<th>{{ __('news.url_news') }}</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -55,7 +55,7 @@
                 },
                 columns: [
                     { 'data': 'id_news' },
-                    { 'data': 'title_new' },					{ 'data': 'url_image_news' },
+                    { 'data': 'title_news' },					{ 'data': 'url_news' },
                     {
                         "data": "id_news",
                         "render": function ( data, type, row, meta ) {

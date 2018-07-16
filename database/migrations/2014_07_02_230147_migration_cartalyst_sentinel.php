@@ -61,7 +61,7 @@ class MigrationCartalystSentinel extends Migration
 			    $table->timestamps();
 			
 			    $table->engine = 'InnoDB';
-			    //$table->foreign('user_id')->references('id')->on('users');
+			    $table->foreign('user_id')->references('id')->on('users');
 		    });
 	    }
 	
@@ -76,7 +76,7 @@ class MigrationCartalystSentinel extends Migration
 			
 			    $table->engine = 'InnoDB';
 			    $table->unique('code');
-			    //$table->foreign('user_id')->references('id')->on('users');
+			    $table->foreign('user_id')->references('id')->on('users');
 		    });
 	    }
 	
@@ -91,7 +91,7 @@ class MigrationCartalystSentinel extends Migration
 			    $table->timestamp('completed_at')->nullable();
 			    $table->timestamps();
 			
-			    //$table->foreign('user_id')->references('id')->on('users');
+			    $table->foreign('user_id')->references('id')->on('users');
 		    });
 	    }
 	
@@ -121,8 +121,8 @@ class MigrationCartalystSentinel extends Migration
 			    $table->engine = 'InnoDB';
 			    $table->primary(['user_id', 'role_id']);
 			
-			    //$table->foreign('user_id')->references('id')->on('users');
-			    //$table->foreign('role_id')->references('id')->on('roles');
+			    $table->foreign('user_id')->references('id')->on('users');
+			    $table->foreign('role_id')->references('id')->on('roles');
 		    });
 	    }
 	
@@ -137,7 +137,7 @@ class MigrationCartalystSentinel extends Migration
 			    $table->timestamps();
 			
 			    $table->engine = 'InnoDB';
-			    //$table->foreign('user_id')->references('id')->on('users');
+			    $table->foreign('user_id')->references('id')->on('users');
 		    });
 	    }
 	    

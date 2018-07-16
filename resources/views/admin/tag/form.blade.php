@@ -37,61 +37,36 @@
                 <div class="box-body"> 
                     <div class="col-sm-12">
                         @if(isset($oItem))
-                            {!! BootForm::open()->action( route('admin.news.update', $oItem->id_news) )->put() !!}
+                            {!! BootForm::open()->action( route('admin.tag.update', $oItem->id_tag) )->put() !!}
                             {!! BootForm::bind($oItem) !!}
                         @else
-                            {!! BootForm::open()->action( route('admin.news.store') )->post() !!}
+                            {!! BootForm::open()->action( route('admin.tag.store') )->post() !!}
                         @endif
-                        
-                        {!! BootForm::text(trans('news.title_news'), 'title_news') !!}
-                        
+
+                        {!! BootForm::text(trans('tag.name_tag'), 'name_tag') !!}
+                        {!! BootForm::hidden('news')->value('') !!}
                         @if(isset($oItem))
-                            {!! BootForm::select(trans('news-category.news_category'), 'fk_news_category')
+                            {!! BootForm::select(trans('news.news'), 'news')
                                 ->class('select2')
-                                ->options([$oItem->fk_news_category => $oItem->news_category->name_news_category])
+                                ->options($oItem->news->pluck('title_news', 'id_news')->toArray())
+			    ->select($oItem->news->pluck('id_news')->toArray())
+			    ->multiple()
                                 ->data([
-                                    'url-select'    => route('admin.news-category.select.ajax'), 
-                                    'url-create'    => route('admin.news-category.create'),
-                                    'field'         => 'name_news_category'
+                                    'url-select'    => route('admin.news.select.ajax'), 
+                                    'url-create'    => route('admin.news.create'),
+                                    'field'         => 'title_news'
                             ]) !!}
                         @else
-                            {!! BootForm::select(trans('news-category.news_category'), 'fk_news_category')
+                            {!! BootForm::select(trans('news.news'), 'news')
                                 ->class('select2')
                                 ->data([
-                                    'url-select'    => route('admin.news-category.select.ajax'), 
-                                    'url-create'    => route('admin.news-category.create'),
-                                    'field'         => 'name_news_category'
-                            ]) !!}
-                        @endif
-                        
-                        @if(isset($oItem) && !empty($oItem->tag))
-                            {!! BootForm::select(trans('tag.tag'), 'tag')
-                                ->class('select2')
-                                ->options($oItem->tag->pluck('name_tag', 'id_tag')->toArray())
-                                ->select($oItem->tag->pluck('id_tag')->toArray())
-                                ->multiple()
-                                ->data([
-                                    'url-select'    => route('admin.tag.select.ajax'), 
-                                    'url-create'    => route('admin.tag.create'),
-                                    'field'         => 'name_tag'
-                            ]) !!}
-                        @else
-                            {!! BootForm::select(trans('tag.tag'), 'tag')
-                                ->class('select2')
-                                ->multiple()
-                                ->data([
-                                    'url-select'    => route('admin.tag.select.ajax'), 
-                                    'url-create'    => route('admin.tag.create'),
-                                    'field'         => 'name_tag'
+                                    'url-select'    => route('admin.news.select.ajax'), 
+                                    'url-create'    => route('admin.news.create'),
+                                    'field'         => 'title_news'
                             ]) !!}
                         @endif
 
-                        {!! BootForm::text(trans('news.url_news'), 'url_news') !!}
-                        {!! BootForm::textarea(trans('news.text_news'), 'text_news')->addClass('ckeditor') !!}
-                        
-                        {!! BootForm::text(trans('news.url_image_news'), 'url_image_news') !!}
-                        {!! BootForm::hidden('tag')->value('') !!}
-                        
+
                         {!! BootForm::submit('Envoyer', 'btn-primary')->addClass('pull-right') !!}
 
                         {!! BootForm::close() !!}
