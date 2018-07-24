@@ -11,11 +11,12 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'page' => 'Page',
-    'fk_page_category' => 'Page category',
-    'fk_users' => 'Users',
-    'title_page' => 'Title page',
-    'url_page' => 'Url page',
-    'created_at' => 'Created at',
-    'updated_at' => 'Updated at'
+    'page'              => 'Page',
+    'fk_page_category'  => 'Page category',
+    'fk_users'          => 'Users',
+    'url_page'          => 'Url page',
+    'title_page'        => 'Title page',
+    'content'           => 'Page content',
+    'created_at'        => 'Created at',
+    'updated_at'        => 'Updated at'
 ];

@@ -25,7 +25,8 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>{{ __('page.title_page') }}</th>					<th>{{ __('page.url_page') }}</th>
+                    <th>{{ __('page.title_page') }}</th>
+					<th>{{ __('page.url_page') }}</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -55,7 +56,8 @@
                 },
                 columns: [
                     { 'data': 'id_page' },
-                    { 'data': 'title_page' },					{ 'data': 'url_page' },
+                    { 'data': 'title_page' },
+					{ 'data': 'url_page' },
                     {
                         "data": "id_page",
                         "render": function ( data, type, row, meta ) {
