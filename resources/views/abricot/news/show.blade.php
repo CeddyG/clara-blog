@@ -83,41 +83,41 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<h2 class="heading-2">Say something</h2>
+								<h2 class="heading-2">Dites nous quelques chose</h2>
 								<form action="#">
 									<div class="row form-group">
 										<div class="col-md-6">
 											<!-- <label for="fname">First Name</label> -->
-											<input type="text" id="fname" class="form-control" placeholder="Your firstname">
+											<input type="text" id="fname" class="form-control" placeholder="Nom">
 										</div>
 										<div class="col-md-6">
 											<!-- <label for="lname">Last Name</label> -->
-											<input type="text" id="lname" class="form-control" placeholder="Your lastname">
+											<input type="text" id="lname" class="form-control" placeholder="Prénom">
 										</div>
 									</div>
 
 									<div class="row form-group">
 										<div class="col-md-12">
 											<!-- <label for="email">Email</label> -->
-											<input type="text" id="email" class="form-control" placeholder="Your email address">
+											<input type="text" id="email" class="form-control" placeholder="Votre Email">
 										</div>
 									</div>
 
 									<div class="row form-group">
 										<div class="col-md-12">
 											<!-- <label for="subject">Subject</label> -->
-											<input type="text" id="subject" class="form-control" placeholder="Your subject of this message">
+											<input type="text" id="subject" class="form-control" placeholder="Sujet">
 										</div>
 									</div>
 
 									<div class="row form-group">
 										<div class="col-md-12">
 											<!-- <label for="message">Message</label> -->
-											<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Say something about us"></textarea>
+											<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Votre message..."></textarea>
 										</div>
 									</div>
 									<div class="form-group">
-										<input type="submit" value="Post Comment" class="btn btn-primary">
+										<input type="submit" value="Publier commentaire" class="btn btn-primary">
 									</div>
 								</form>
 							</div>
@@ -127,12 +127,12 @@
 						<div class="sidebar">
 							<div class="side">
 								<div class="form-group">
-									<input type="text" class="form-control" id="search" placeholder="Enter any key to search...">
+									<input type="text" class="form-control" id="search" placeholder="Rechercher...">
 									<button type="submit" class="btn btn-primary"><i class="icon-search3"></i></button>
 								</div>
 							</div>
 							<div class="side">
-								<h2 class="sidebar-heading">Categories</h2>
+								<h2 class="sidebar-heading">Catégories</h2>
 								<p>
 									<ul class="category">
 										<li><a href="#"><i class="icon-check"></i> Home</a></li>
@@ -146,7 +146,7 @@
 								</p>
 							</div>
 							<div class="side">
-								<h2 class="sidebar-heading">Recent Blog</h2>
+								<h2 class="sidebar-heading">Derniers articles</h2>
 								<div class="f-blog">
 									<a href="blog.html" class="blog-img" style="background-image: url({{ asset('img/abricot/blog-1.jpg') }});">
 									</a>
@@ -172,31 +172,11 @@
 									</div>
 								</div>
 							</div>
-							<div class="side">
-								<h2 class="sidebar-heading">Instagram</h2>
-								<div class="instagram-entry">
-									<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-1.jpg') }});">
-									</a>
-									<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-2.jpg') }});">
-									</a>
-									<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-3.jpg') }});">
-									</a>
-									<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-4.jpg') }});">
-									</a>
-									<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-5.jpg') }});">
-									</a>
-									<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-6.jpg') }});">
-									</a>
-									<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-7.jpg') }});">
-									</a>
-									<a href="#" class="instagram text-center" style="background-image: url({{ asset('img/abricot/gallery-8.jpg') }});">
-									</a>
-								</div>
-							</div>
+
 							<div class="side">
 								<div class="form-group">
-									<input type="text" class="form-control form-email text-center" id="email" placeholder="Enter your email">
-									<button type="submit" class="btn btn-primary btn-subscribe">Subscribe</button>
+									<input type="text" class="form-control form-email text-center" id="email" placeholder="Entrez votre Email">
+									<button type="submit" class="btn btn-primary btn-subscribe">S'inscrire</button>
 								</div>
 							</div>
 						</div>
