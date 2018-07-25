@@ -20,8 +20,8 @@ class Page extends Model
     protected $fillable = [
         'fk_page_category',
 		'fk_users',
-		'url_page',
-		'name_page'
+		'title_page',
+		'url_page'
     ];
     
 

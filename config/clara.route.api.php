@@ -8,5 +8,6 @@ return [
     'page' => 'Page',
     'page-categorie' => 'PageCategorie',
     'news-category' => 'NewsCategory',
-    'page-category' => 'PageCategory'
+    'page-category' => 'PageCategory',
+    'tag' => 'Tag'
 ];

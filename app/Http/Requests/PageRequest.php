@@ -15,6 +15,18 @@ class PageRequest extends FormRequest
     {
         return true;
     }
+    
+    public function all($keys = null)
+    {
+        $aAttribute = parent::all($keys);
+        
+        if (Sentinel::check())
+        {
+            $aAttribute['fk_users'] = Sentinel::getUser()->id;
+        }
+        
+        return $aAttribute;
+    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -24,7 +36,13 @@ class PageRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_page' => 'numeric',	    'fk_page_category' => 'numeric',	    'fk_users' => 'numeric',	    'url_page' => 'string|max:255',	    'name_page' => 'string|max:45',	    'created_at' => 'string',	    'updated_at' => 'string'
+            'id_page' => 'numeric',
+            'fk_page_category' => 'numeric',
+            'fk_users' => 'numeric',
+            'title_page' => 'string|max:45',
+            'url_page' => 'string|max:255',
+            'created_at' => 'string',
+            'updated_at' => 'string'
         ];
     }
 }

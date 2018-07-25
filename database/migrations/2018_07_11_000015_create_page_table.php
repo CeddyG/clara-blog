@@ -26,8 +26,8 @@ class CreatePageTable extends Migration
             $table->integer('id_page', true);
             $table->integer('fk_page_category');
             $table->unsignedInteger('fk_users');
+            $table->string('title_page', 45)->nullable()->default(null);
             $table->string('url_page')->nullable()->default(null);
-            $table->string('name_page', 45)->nullable()->default(null);
 
             $table->index(["fk_users"], 'fk_page_users1_idx');
             $table->index(["fk_page_category"], 'fk_page_page_categorie1_idx');

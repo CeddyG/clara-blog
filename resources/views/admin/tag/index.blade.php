@@ -25,8 +25,7 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>{{ __('page.title_page') }}</th>
-					<th>{{ __('page.url_page') }}</th>
+                    <th>{{ __('tag.name_tag') }}</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -35,7 +34,7 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer clearfix">
-            {!! Button::info('Ajouter')->asLinkTo(route('admin.page.create'))->small() !!}
+            {!! Button::info('Ajouter')->asLinkTo(route('admin.tag.create'))->small() !!}
         </div>
         <!-- /.box-footer -->
     </div>
@@ -52,27 +51,26 @@
             $('#tab-admin').DataTable({
                 serverSide: true,
                 ajax: {
-                    'url': '{{ route('admin.page.index.ajax') }}'
+                    'url': '{{ route('admin.tag.index.ajax') }}'
                 },
                 columns: [
-                    { 'data': 'id_page' },
-                    { 'data': 'title_page' },
-					{ 'data': 'url_page' },
+                    { 'data': 'id_tag' },
+                    { 'data': 'name_tag' },
                     {
-                        "data": "id_page",
+                        "data": "id_tag",
                         "render": function ( data, type, row, meta ) {
 
-                            var render = "{!! Button::warning('Modifier')->asLinkTo(route('admin.page.edit', 'dummyId'))->extraSmall()->block()->render() !!}";
+                            var render = "{!! Button::warning('Modifier')->asLinkTo(route('admin.tag.edit', 'dummyId'))->extraSmall()->block()->render() !!}";
                             render = render.replace("dummyId", data);
 
                             return render;
                         }
                     },
                     {
-                        "data": "id_page",
+                        "data": "id_tag",
                         "render": function ( data, type, row, meta ) {
 
-                            var render = '{!! BootForm::open()->action( route("admin.page.destroy", "dummyId") )->attribute("onsubmit", "return confirm(\'Vraiment supprimer cet objet ?\')")->delete() !!}'
+                            var render = '{!! BootForm::open()->action( route("admin.tag.destroy", "dummyId") )->attribute("onsubmit", "return confirm(\'Vraiment supprimer cet objet ?\')")->delete() !!}'
                                 +'{!! BootForm::submit("Supprimer", "btn-danger")->addClass("btn-block btn-xs") !!}'
                                 +'{!! BootForm::close() !!}';
                             render = render.replace("dummyId", data);

@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+use Sentinel;
+
 class NewsRequest extends FormRequest
 {
     /**
@@ -15,6 +17,18 @@ class NewsRequest extends FormRequest
     {
         return true;
     }
+    
+    public function all($keys = null)
+    {
+        $aAttribute = parent::all($keys);
+        
+        if (Sentinel::check())
+        {
+            $aAttribute['fk_users'] = Sentinel::getUser()->id;
+        }
+        
+        return $aAttribute;
+    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -24,7 +38,15 @@ class NewsRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_news' => 'numeric',	    'fk_news_category' => 'numeric',	    'fk_users' => 'numeric',	    'title_new' => 'string|max:90',	    'text_news' => '',	    'url_image_news' => 'string|max:255',	    'created_at' => 'string',	    'updated_at' => 'string'
+            'id_news' => 'numeric',
+            'fk_news_category' => 'numeric',
+            'fk_users' => 'numeric',
+            'title_news' => 'string|max:90',
+            'url_news' => 'string|max:255',
+            'text_news' => '',
+            'url_image_news' => 'string|max:255|nullable',
+            'created_at' => 'string',
+            'updated_at' => 'string'
         ];
     }
 }

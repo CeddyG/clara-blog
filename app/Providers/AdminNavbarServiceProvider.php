@@ -31,7 +31,8 @@ class AdminNavbarServiceProvider extends ServiceProvider
                     'News',
                     [
                         ['title' => 'Liste', 'link' => route('admin.news.index'), 'active' => $sEntity == 'news'],
-                        ['title' => 'Catégorie', 'link' => route('admin.news-category.index'), 'active' => $sEntity == 'news-category']
+                        ['title' => 'Catégorie', 'link' => route('admin.news-category.index'), 'active' => $sEntity == 'news-category'],
+                        ['title' => 'Tags', 'link' => route('admin.tag.index'), 'active' => $sEntity == 'tag']
                     ]
                 ],
                 [

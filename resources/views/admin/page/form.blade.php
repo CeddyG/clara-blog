@@ -3,21 +3,107 @@
 @section('CSS')
     <!-- Select 2 -->
     {!! Html::style('bower_components/select2/dist/css/select2.min.css') !!}
+    
+    <!-- bootstrap slider -->
+    {!! Html::style('adminlte/plugins/bootstrap-slider/slider.css') !!}
 
     <style>
-        .select2
-        {
-            width: 100% !important
-        }
-        
-        .input-group
-        {
-            width: 100% !important
-        }
-        
         .input-group-addon:hover
         {
             color: black;
+        }
+        
+        #line-template
+        {
+            height: 200px;
+        }
+        
+        .template
+        {
+            width: 200px;
+            height: 150px;
+            
+            margin: 20px;
+            opacity: 0.7;
+            z-index: 10;
+        }
+        
+        #content-zone
+        {
+            min-height: 500px;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        
+        #content-zone .row
+        {
+            min-height: 200px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            background-color: #001F3F;
+            
+            opacity: 0.7;
+        }
+        .template-container
+        {
+            min-height: 200px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            background-color: #605ca8;
+            background-clip: content-box;
+            
+            opacity: 0.7;
+        }
+        
+        .template-content-render
+        {
+            min-height: 150px;
+            margin: 25px;
+            opacity: 1;
+        }
+        
+        .template-content-text
+        {
+            background-color: #3c8dbc;
+        }
+        
+        .template-content-image
+        {
+            background-color: #00a65a;
+        }
+        
+        .template-content-data
+        {
+            background-color: #f39c12;
+        }
+        
+        #content-zone .row,
+        .template-container,
+        .template-content-render
+        {
+            cursor: pointer;
+        }
+        
+        .slider.slider-horizontal
+        {
+            margin-bottom: 40px !important;
+        }
+        
+        .slider-tick-label-container
+        {
+            margin-left: -4.5% !important;
+            margin-top: 0 !important;
+        }
+        
+        .slider-tick-label
+        {
+            width: 8.7% !important;
+            padding-top: 20px !important;
+        }
+        
+        .slider-tick.round
+        {
+            display: none;
         }
     </style>
 @stop
@@ -34,54 +120,278 @@
                         <h3 class="box-title">Ajouter</h3>
                     @endif
                 </div>
+                <div class="box-body">
+                    @if(isset($oItem))
+                        {!! BootForm::open()->action( route('admin.page.update', $oItem->id_page) )->put() !!}
+                        {!! BootForm::bind($oItem) !!}
+                    @else
+                        {!! BootForm::open()->action( route('admin.page.store') )->post() !!}
+                    @endif
+
+                    {!! BootForm::text(__('page.title_page'), 'title_page') !!}
+
+                    @if(isset($oItem))
+                        {!! BootForm::select(__('page-category.page_category'), 'fk_page_category')
+                            ->class('select2 form-control')
+                            ->options([$oItem->fk_page_category => $oItem->page_category->name_page_category])
+                            ->data([
+                                'url-select'    => route('admin.page-category.select.ajax'), 
+                                'url-create'    => route('admin.page-category.create'),
+                                'field'         => 'name_page_category'
+                        ]) !!}
+                    @else
+                        {!! BootForm::select(__('page-category.page_category'), 'fk_page_category')
+                            ->class('select2 form-control')
+                            ->data([
+                                'url-select'    => route('admin.page-category.select.ajax'), 
+                                'url-create'    => route('admin.page-category.create'),
+                                'field'         => 'name_page_category'
+                        ]) !!}
+                    @endif
+
+                    {!! BootForm::text(__('page.url_page'), 'url_page') !!}
+                </div>
+            </div>
+        </div>
+    </div>
+      
+    <div class="row" id="line-template">
+        <div class="col-sm-12">
+            <div class="box box-info">	
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ __('page.template') }}</h3>
+                </div>
                 <div class="box-body"> 
-                    <div class="col-sm-12">
-                        @if(isset($oItem))
-                            {!! BootForm::open()->action( route('admin.page.update', $oItem->id_page) )->put() !!}
-                            {!! BootForm::bind($oItem) !!}
-                        @else
-                            {!! BootForm::open()->action( route('admin.page.store') )->post() !!}
-                        @endif
+                    <div class="col-sm-2 draggable template bg-navy" id="template-row">
+                        LIGNE
+                    </div>
 
-                        
-                        @if(isset($oItem))
-                            {!! BootForm::select(trans('page-category.page_category'), 'fk_page_category')
-                                ->class('select2')
-                                ->options([$oItem->fk_page_category => $oItem->page_category->name_page_category])
-                                ->data([
-                                    'url-select'    => route('admin.page-category.select.ajax'), 
-                                    'url-create'    => route('admin.page-category.create'),
-                                    'field'         => 'name_page_category'
-                            ]) !!}
-                        @else
-                            {!! BootForm::select(trans('page-category.page_category'), 'fk_page_category')
-                                ->class('select2')
-                                ->data([
-                                    'url-select'    => route('admin.page-category.select.ajax'), 
-                                    'url-create'    => route('admin.page-category.create'),
-                                    'field'         => 'name_page_category'
-                            ]) !!}
-                        @endif
+                    <div class="col-sm-2 draggable template bg-purple" id="template-column">
+                        COLONNE
+                    </div>
 
-                        {!! BootForm::text(trans('page.url_page'), 'url_page') !!}
-                        {!! BootForm::text(trans('page.name_page'), 'name_page') !!}
+                    <div class="col-sm-2 draggable template template-content bg-light-blue" id="template-text">
+                        TEXT
+                    </div>
 
-                        {!! BootForm::submit('Envoyer', 'btn-primary')->addClass('pull-right') !!}
+                    <div class="col-sm-2 draggable template template-content bg-green" id="template-image">
+                        IMAGE
+                    </div>
 
-                        {!! BootForm::close() !!}
+                    <div class="col-sm-2 draggable template template-content bg-yellow" id="template-data">
+                        DATA
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+       
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="box box-info">	
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ __('page.content') }}</h3>
+                </div>
+                <div class="box-body"> 
+                    <div id="content-zone"></div>
+                    {!! BootForm::submit(__('general.send'), 'btn-primary')->addClass('pull-right') !!}
+
+                    {!! BootForm::close() !!}
+                </div>
+            </div>
             <a href="javascript:history.back()" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-circle-arrow-left"></span> Retour
+                <span class="glyphicon glyphicon-circle-arrow-left"></span> {{ __('general.return') }}
             </a>
         </div>
     </div>
+    
+    <div class="modal fade" id="modal-row">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('general.close') }}">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">{{ __('page.modal_row_title') }}</h4>
+                </div>
+                <div class="modal-body">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{ __('general.close') }}</button>
+                    <button type="button" class="btn btn-primary">{{ __('general.save') }}</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    
+    <div class="modal fade" id="modal-col">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('general.close') }}">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">{{ __('page.modal_col_title') }}</h4>
+                </div>
+                <div class="modal-body">
+                    {!! BootForm::open() !!}
+                        <!-- Custom Tabs -->
+                        <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab_1" data-toggle="tab">{{ __('page.size') }}</a></li>
+                                <li><a href="#tab_2" data-toggle="tab">{{ __('page.advanced') }}</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_1">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-6">
+                                            {!! BootForm::text('X-Small', 'xs-size')
+                                                ->class('slider')
+                                                ->data(config('clara.page.slider.aqua')) !!}
+
+                                            {!! BootForm::text('Small', 's-size')
+                                                ->class('slider')
+                                                ->data(config('clara.page.slider.aqua')) !!}
+
+                                            {!! BootForm::text('Medium', 'm-size')
+                                                ->class('slider')
+                                                ->data(config('clara.page.slider.aqua')) !!}
+
+                                            {!! BootForm::text('Large', 'l-size')
+                                                ->class('slider')
+                                                ->data(config('clara.page.slider.aqua')) !!}
+                                        </div>
+                                        
+                                        <div class="col-xs-12 col-sm-6">
+                                            {!! BootForm::text('X-Small', 'xs-offset')
+                                                ->class('slider')
+                                                ->data(config('clara.page.slider.purple')) !!}
+
+                                            {!! BootForm::text('Small', 's-offset')
+                                                ->class('slider')
+                                                ->data(config('clara.page.slider.purple')) !!}
+
+                                            {!! BootForm::text('Medium', 'm-offset')
+                                                ->class('slider')
+                                                ->data(config('clara.page.slider.purple')) !!}
+
+                                            {!! BootForm::text('Large', 'l-offset')
+                                                ->class('slider')
+                                                ->data(config('clara.page.slider.purple')) !!}
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.tab-pane -->
+                                <div class="tab-pane" id="tab_2">
+                                    The European languages are members of the same family. Their separate existence is a myth.
+                                    For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
+                                    in their grammar, their pronunciation and their most common words. Everyone realizes why a
+                                    new common language would be desirable: one could refuse to pay expensive translators. To
+                                    achieve this, it would be necessary to have uniform grammar, pronunciation and more common
+                                    words. If several languages coalesce, the grammar of the resulting language is more simple
+                                    and regular than that of the individual languages.
+                                </div>
+                                <!-- /.tab-pane -->
+                            </div>
+                            <!-- /.tab-content -->
+                        </div>
+                        <!-- nav-tabs-custom -->
+                    {!! BootForm::close() !!}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{ __('general.close') }}</button>
+                    <button type="button" class="btn btn-primary">{{ __('general.save') }}</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    
+    <div class="modal fade" id="modal-text">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('general.close') }}">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">{{ __('page.modal_text_title') }}</h4>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body&hellip;</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{ __('general.close') }}</button>
+                    <button type="button" class="btn btn-primary">{{ __('general.save') }}</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    
+    <div class="modal fade" id="modal-image">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('general.close') }}">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">{{ __('page.modal_image_title') }}</h4>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body&hellip;</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{ __('general.close') }}</button>
+                    <button type="button" class="btn btn-primary">{{ __('general.save') }}</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    
+    <div class="modal fade" id="modal-data">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('general.close') }}">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">{{ __('page.modal_data_title') }}</h4>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body&hellip;</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{ __('general.close') }}</button>
+                    <button type="button" class="btn btn-primary">{{ __('general.save') }}</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 @stop
 
 @section('JS')
     <!-- Select 2 -->
     {!! Html::script('bower_components/select2/dist/js/select2.full.min.js') !!}
+    
+    <!-- Draggable -->
+    {!! Html::script('bower_components/jquery-ui/jquery-ui.min.js') !!}
+    
+    <!-- Bootstrap slider -->
+    {!! Html::script('adminlte/plugins/bootstrap-slider/bootstrap-slider.js') !!}
     
     <script type="text/javascript">
         $(document).ready(function() {
@@ -122,7 +432,83 @@
                 },
                 them: 'bootstrap'
             });
-        } );
+            
+            $('.draggable').draggable({
+                grid : [20 , 20],
+                revert : true,
+                revertDuration: 0
+            });
+            
+            $('#content-zone').droppable({
+                accept: "#template-row",
+                drop : function(){
+                    $(this).append('<div class="row"></div>');
+                    
+                    $('#content-zone > .row').droppable({
+                        accept: "#template-column",
+                        drop : function(){
+                            $(this).append('<div class="col col-lg-3 template-container"></div>');
+                            
+                            $('#content-zone > .row > .col').droppable({
+                                accept: ".template-content",
+                                drop : function(ev, template){
+                                    
+                                    switch (template.draggable.attr('id'))
+                                    {
+                                        case 'template-text':
+                                            $(this).append('<div class="template-content-render template-content-text"></div>');
+                                            break;
+                                        
+                                        case 'template-image':
+                                            $(this).append('<div class="template-content-render template-content-image"></div>');
+                                            break;
+                                        
+                                        case 'template-data':
+                                            $(this).append('<div class="template-content-render template-content-data"></div>');
+                                            break;
+                                    }                                    
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+            $('#content-zone').on('click', '.row', function(e){
+                if (e.target !== this)
+                    return;
+                
+                $('#modal-row').modal();
+            });
+
+            $('#content-zone').on('click', '.template-container', function(e){
+                if (e.target !== this)
+                    return;
+                
+                $('#modal-col').modal();
+            });
+
+            $('#content-zone').on('click', '.template-content-render', function(e){
+                if (e.target !== this)
+                    return;
+                
+                if ($(this).hasClass('template-content-text'))
+                {
+                    $('#modal-text').modal();
+                }
+                
+                if ($(this).hasClass('template-content-image'))
+                {
+                    $('#modal-image').modal();
+                }
+                
+                if ($(this).hasClass('template-content-data'))
+                {
+                    $('#modal-data').modal();
+                }                
+            });
+            
+            $('.slider').bootstrapSlider();
+        });
     </script> 
 
     {!! Html::script('bower_components/ckeditor/ckeditor.js') !!}
