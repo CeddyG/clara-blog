@@ -35,20 +35,18 @@
                     @endif
                 </div>
                 <div class="box-body"> 
-                    <div class="col-sm-12">
-                        @if(isset($oItem))
-                            {!! BootForm::open()->action( route('admin.news-category.update', $oItem->id_news_category) )->put() !!}
-                            {!! BootForm::bind($oItem) !!}
-                        @else
-                            {!! BootForm::open()->action( route('admin.news-category.store') )->post() !!}
-                        @endif
+                    @if(isset($oItem))
+                        {!! BootForm::open()->action( route('admin.news-category.update', $oItem->id_news_category) )->put() !!}
+                        {!! BootForm::bind($oItem) !!}
+                    @else
+                        {!! BootForm::open()->action( route('admin.news-category.store') )->post() !!}
+                    @endif
 
                         {!! BootForm::text(trans('news-category.name_news_category'), 'name_news_category') !!}
 
-                        {!! BootForm::submit('Envoyer', 'btn-primary')->addClass('pull-right') !!}
+                    {!! BootForm::submit('Envoyer', 'btn-primary')->addClass('pull-right') !!}
 
-                        {!! BootForm::close() !!}
-                    </div>
+                    {!! BootForm::close() !!}
                 </div>
             </div>
             <a href="javascript:history.back()" class="btn btn-primary">

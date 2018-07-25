@@ -35,22 +35,22 @@
                     @endif
                 </div>
                 <div class="box-body"> 
-                    <div class="col-sm-12">
-                        @if(isset($oItem))
-                            {!! BootForm::open()->action( route('admin.tag.update', $oItem->id_tag) )->put() !!}
-                            {!! BootForm::bind($oItem) !!}
-                        @else
-                            {!! BootForm::open()->action( route('admin.tag.store') )->post() !!}
-                        @endif
+                    @if(isset($oItem))
+                        {!! BootForm::open()->action( route('admin.tag.update', $oItem->id_tag) )->put() !!}
+                        {!! BootForm::bind($oItem) !!}
+                    @else
+                        {!! BootForm::open()->action( route('admin.tag.store') )->post() !!}
+                    @endif
 
                         {!! BootForm::text(trans('tag.name_tag'), 'name_tag') !!}
                         {!! BootForm::hidden('news')->value('') !!}
-                        @if(isset($oItem))
+                        
+                        @if(isset($oItem) && !empty($oItem->news))
                             {!! BootForm::select(trans('news.news'), 'news')
                                 ->class('select2')
                                 ->options($oItem->news->pluck('title_news', 'id_news')->toArray())
-			    ->select($oItem->news->pluck('id_news')->toArray())
-			    ->multiple()
+                                ->select($oItem->news->pluck('id_news')->toArray())
+                                ->multiple()
                                 ->data([
                                     'url-select'    => route('admin.news.select.ajax'), 
                                     'url-create'    => route('admin.news.create'),
@@ -67,10 +67,9 @@
                         @endif
 
 
-                        {!! BootForm::submit('Envoyer', 'btn-primary')->addClass('pull-right') !!}
+                    {!! BootForm::submit('Envoyer', 'btn-primary')->addClass('pull-right') !!}
 
-                        {!! BootForm::close() !!}
-                    </div>
+                    {!! BootForm::close() !!}
                 </div>
             </div>
             <a href="javascript:history.back()" class="btn btn-primary">

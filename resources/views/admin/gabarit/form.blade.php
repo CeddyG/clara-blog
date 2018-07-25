@@ -15,20 +15,18 @@
                     @endif
                 </div>
                 <div class="box-body"> 
-                    <div class="col-sm-12">
-                        @if(isset($oItem))
-                            {!! BootForm::open()->action( route('admin.gabarit.update', $oItem->id_gabarit) )->put() !!}
-                            {!! BootForm::bind($oItem) !!}
-                        @else
-                            {!! BootForm::open()->action( route('admin.gabarit.store') )->post() !!}
-                        @endif
+                    @if(isset($oItem))
+                        {!! BootForm::open()->action( route('admin.gabarit.update', $oItem->id_gabarit) )->put() !!}
+                        {!! BootForm::bind($oItem) !!}
+                    @else
+                        {!! BootForm::open()->action( route('admin.gabarit.store') )->post() !!}
+                    @endif
 
                         {!! BootForm::text(trans('gabarit.type_gabarit'), 'type_gabarit') !!}
 
-                        {!! BootForm::submit('Envoyer', 'btn-primary')->addClass('pull-right') !!}
+                    {!! BootForm::submit('Envoyer', 'btn-primary')->addClass('pull-right') !!}
 
-                        {!! BootForm::close() !!}
-                    </div>
+                    {!! BootForm::close() !!}
                 </div>
             </div>
             <a href="javascript:history.back()" class="btn btn-primary">

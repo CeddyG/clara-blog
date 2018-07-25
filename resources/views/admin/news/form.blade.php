@@ -35,14 +35,13 @@
                     @endif
                 </div>
                 <div class="box-body"> 
-                    <div class="col-sm-12">
-                        @if(isset($oItem))
-                            {!! BootForm::open()->action( route('admin.news.update', $oItem->id_news) )->put() !!}
-                            {!! BootForm::bind($oItem) !!}
-                        @else
-                            {!! BootForm::open()->action( route('admin.news.store') )->post() !!}
-                        @endif
-                        
+                    @if(isset($oItem))
+                        {!! BootForm::open()->action( route('admin.news.update', $oItem->id_news) )->put() !!}
+                        {!! BootForm::bind($oItem) !!}
+                    @else
+                        {!! BootForm::open()->action( route('admin.news.store') )->post() !!}
+                    @endif
+
                         {!! BootForm::text(trans('news.title_news'), 'title_news') !!}
                         
                         @if(isset($oItem))
@@ -63,7 +62,7 @@
                                     'field'         => 'name_news_category'
                             ]) !!}
                         @endif
-                        
+
                         @if(isset($oItem) && !empty($oItem->tag))
                             {!! BootForm::select(trans('tag.tag'), 'tag')
                                 ->class('select2')
@@ -88,14 +87,13 @@
 
                         {!! BootForm::text(trans('news.url_news'), 'url_news') !!}
                         {!! BootForm::textarea(trans('news.text_news'), 'text_news')->addClass('ckeditor') !!}
-                        
+
                         {!! BootForm::text(trans('news.url_image_news'), 'url_image_news') !!}
                         {!! BootForm::hidden('tag')->value('') !!}
                         
-                        {!! BootForm::submit('Envoyer', 'btn-primary')->addClass('pull-right') !!}
+                    {!! BootForm::submit('Envoyer', 'btn-primary')->addClass('pull-right') !!}
 
-                        {!! BootForm::close() !!}
-                    </div>
+                    {!! BootForm::close() !!}
                 </div>
             </div>
             <a href="javascript:history.back()" class="btn btn-primary">
