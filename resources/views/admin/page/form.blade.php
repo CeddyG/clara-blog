@@ -253,15 +253,15 @@
                                                 ->class('slider')
                                                 ->data(config('clara.page.slider.aqua')) !!}
 
-                                            {!! BootForm::text('Small', 's-size')
+                                            {!! BootForm::text('Small', 'sm-size')
                                                 ->class('slider')
                                                 ->data(config('clara.page.slider.aqua')) !!}
 
-                                            {!! BootForm::text('Medium', 'm-size')
+                                            {!! BootForm::text('Medium', 'md-size')
                                                 ->class('slider')
                                                 ->data(config('clara.page.slider.aqua')) !!}
 
-                                            {!! BootForm::text('Large', 'l-size')
+                                            {!! BootForm::text('Large', 'lg-size')
                                                 ->class('slider')
                                                 ->data(config('clara.page.slider.aqua')) !!}
                                         </div>
@@ -271,15 +271,15 @@
                                                 ->class('slider')
                                                 ->data(config('clara.page.slider.purple')) !!}
 
-                                            {!! BootForm::text('Small', 's-offset')
+                                            {!! BootForm::text('Small', 'sm-offset')
                                                 ->class('slider')
                                                 ->data(config('clara.page.slider.purple')) !!}
 
-                                            {!! BootForm::text('Medium', 'm-offset')
+                                            {!! BootForm::text('Medium', 'md-offset')
                                                 ->class('slider')
                                                 ->data(config('clara.page.slider.purple')) !!}
 
-                                            {!! BootForm::text('Large', 'l-offset')
+                                            {!! BootForm::text('Large', 'lg-offset')
                                                 ->class('slider')
                                                 ->data(config('clara.page.slider.purple')) !!}
                                         </div>
@@ -304,7 +304,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{ __('general.close') }}</button>
-                    <button type="button" class="btn btn-primary">{{ __('general.save') }}</button>
+                    <button type="button" class="btn btn-primary" id="submit-modal-text">{{ __('general.save') }}</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -432,9 +432,86 @@
                 },
                 them: 'bootstrap'
             });
+        });    
+    </script>
+            
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var oCurrentElement = null;
+            
+            function buildModalCol()
+            {
+                var aClass = oCurrentElement.attr('class').split(' ');
+                var nbClass = aClass.length;
+                
+                var sizeXs = 12;
+                var sizeSm = 12;
+                var sizeMd = 12;
+                var sizeLg = 12;
+                
+                if (oCurrentElement.is('[class*=col-xs]'))
+                {
+                    for (var i = 0; i < nbClass; i++) 
+                    {
+                        if (aClass[i].substring(0,7) == 'col-xs-')
+                        {
+                            sizeXs = aClass[i].substring(7);
+                        }
+                    }
+                }
+                
+                if (oCurrentElement.is('[class*=col-sm]'))
+                {
+                    for (var i = 0; i < nbClass; i++) 
+                    {
+                        if (aClass[i].substring(0,7) == 'col-sm-')
+                        {
+                            sizeSm = aClass[i].substring(7);
+                        }
+                    }
+                }
+                else
+                {
+                    sizeSm = sizeXs;
+                }
+                
+                if (oCurrentElement.is('[class*=col-md]'))
+                {
+                    for (var i = 0; i < nbClass; i++) 
+                    {
+                        if (aClass[i].substring(0,7) == 'col-md-')
+                        {
+                            sizeMd = aClass[i].substring(7);
+                        }
+                    }
+                }
+                else
+                {
+                    sizeMd = sizeSm;
+                }
+                
+                if (oCurrentElement.is('[class*=col-lg]'))
+                {
+                    for (var i = 0; i < nbClass; i++) 
+                    {
+                        if (aClass[i].substring(0,7) == 'col-lg-')
+                        {
+                            sizeLg = aClass[i].substring(7);
+                        }
+                    }
+                }
+                else
+                {
+                    sizeLg = sizeMd;
+                }
+                
+                $('#xs-size').bootstrapSlider('setValue', parseInt(sizeXs), true);
+                $('#sm-size').bootstrapSlider('setValue', parseInt(sizeSm), true);
+                $('#md-size').bootstrapSlider('setValue', parseInt(sizeMd), true);
+                $('#lg-size').bootstrapSlider('setValue', parseInt(sizeLg), true);
+            }
             
             $('.draggable').draggable({
-                grid : [20 , 20],
                 revert : true,
                 revertDuration: 0
             });
@@ -447,7 +524,7 @@
                     $('#content-zone > .row').droppable({
                         accept: "#template-column",
                         drop : function(){
-                            $(this).append('<div class="col col-lg-3 template-container"></div>');
+                            $(this).append('<div class="col col-xs-3 template-container"></div>');
                             
                             $('#content-zone > .row > .col').droppable({
                                 accept: ".template-content",
@@ -473,10 +550,12 @@
                     });
                 }
             });
+            
             $('#content-zone').on('click', '.row', function(e){
                 if (e.target !== this)
                     return;
                 
+                oCurrentElement = $(this);
                 $('#modal-row').modal();
             });
 
@@ -484,12 +563,16 @@
                 if (e.target !== this)
                     return;
                 
+                oCurrentElement = $(this); 
+                buildModalCol();
                 $('#modal-col').modal();
             });
 
             $('#content-zone').on('click', '.template-content-render', function(e){
                 if (e.target !== this)
                     return;
+                
+                oCurrentElement = $(this);
                 
                 if ($(this).hasClass('template-content-text'))
                 {
@@ -508,6 +591,23 @@
             });
             
             $('.slider').bootstrapSlider();
+            
+            $('#submit-modal-text').on('click', function(){
+                oCurrentElement.removeClass (function (index, className) {
+                    return (className.match (/(^|\s)col-\S+/g) || []).join(' ');
+                });
+                
+                var sClass = '';
+                
+                sClass += 'col-xs-'+$('#xs-size').val();
+                sClass += ' col-sm-'+$('#sm-size').val();
+                sClass += ' col-md-'+$('#md-size').val();
+                sClass += ' col-lg-'+$('#lg-size').val();
+                
+                oCurrentElement.addClass(sClass);
+                
+                $('#modal-col').modal('hide');
+            });
         });
     </script> 
 

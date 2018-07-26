@@ -15,7 +15,6 @@ return [
             'slider-min'            => '1',
             'slider-max'            => '12',
             'slider-step'           => '1',
-            'slider-value'          => '3',
         ],
         'purple' => [
             'provide'               => 'slider', 
@@ -26,7 +25,6 @@ return [
             'slider-min'            => '1',
             'slider-max'            => '12',
             'slider-step'           => '1',
-            'slider-value'          => '3',
         ]
     ]
     
