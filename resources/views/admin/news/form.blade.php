@@ -87,9 +87,7 @@
 
                         {!! BootForm::text(trans('news.url_news'), 'url_news') !!}
                         {!! BootForm::textarea(trans('news.text_news'), 'text_news')->addClass('ckeditor') !!}
-
                         {!! BootForm::text(trans('news.url_image_news'), 'url_image_news') !!}
-                        {!! BootForm::hidden('tag')->value('') !!}
                         
                     {!! BootForm::submit('Envoyer', 'btn-primary')->addClass('pull-right') !!}
 

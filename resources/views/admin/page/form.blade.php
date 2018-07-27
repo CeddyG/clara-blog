@@ -4,6 +4,9 @@
     <!-- Select 2 -->
     {!! Html::style('bower_components/select2/dist/css/select2.min.css') !!}
     
+    <!-- iCheck for checkboxes and radio inputs -->
+    {!! Html::style('adminlte/plugins/iCheck/all.css') !!}
+    
     <!-- bootstrap slider -->
     {!! Html::style('adminlte/plugins/bootstrap-slider/slider.css') !!}
 
@@ -82,6 +85,14 @@
         .template-content-render
         {
             cursor: pointer;
+        }
+        
+        #modal-col .input-group-addon
+        {
+            border: 0;
+            vertical-align: top;
+            padding-right: 15px;
+            padding-left: 0;
         }
         
         .slider.slider-horizontal
@@ -249,39 +260,57 @@
                                 <div class="tab-pane active" id="tab_1">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-6">
-                                            {!! BootForm::text('X-Small', 'xs-size')
+                                            <h4 class="text-center">{{ __('page.width') }}</h4>
+                                            {!! BootForm::inputGroup('X-Small', 'xs-size')
+                                                ->type('text')
                                                 ->class('slider')
-                                                ->data(config('clara.page.slider.aqua')) !!}
+                                                ->data(config('clara.page.slider.aqua'))
+                                                ->beforeAddon('<input class="minimal" type="checkbox">') !!}
 
-                                            {!! BootForm::text('Small', 'sm-size')
+                                            {!! BootForm::inputGroup('Small', 'sm-size')
+                                                ->type('text')
                                                 ->class('slider')
-                                                ->data(config('clara.page.slider.aqua')) !!}
+                                                ->data(config('clara.page.slider.aqua'))
+                                                ->beforeAddon('<input class="minimal" type="checkbox">') !!}
 
-                                            {!! BootForm::text('Medium', 'md-size')
+                                            {!! BootForm::inputGroup('Medium', 'md-size')
+                                                ->type('text')
                                                 ->class('slider')
-                                                ->data(config('clara.page.slider.aqua')) !!}
+                                                ->data(config('clara.page.slider.aqua'))
+                                                ->beforeAddon('<input class="minimal" type="checkbox">') !!}
 
-                                            {!! BootForm::text('Large', 'lg-size')
+                                            {!! BootForm::inputGroup('Large', 'lg-size')
+                                                ->type('text')
                                                 ->class('slider')
-                                                ->data(config('clara.page.slider.aqua')) !!}
+                                                ->data(config('clara.page.slider.aqua'))
+                                                ->beforeAddon('<input class="minimal" type="checkbox">') !!}
                                         </div>
                                         
                                         <div class="col-xs-12 col-sm-6">
-                                            {!! BootForm::text('X-Small', 'xs-offset')
+                                            <h4 class="text-center">{{ __('page.offset') }}</h4>
+                                            {!! BootForm::inputGroup('X-Small', 'xs-offset')
+                                                ->type('text')
                                                 ->class('slider')
-                                                ->data(config('clara.page.slider.purple')) !!}
+                                                ->data(config('clara.page.slider.purple'))
+                                                ->beforeAddon('<input class="minimal" type="checkbox">') !!}
 
-                                            {!! BootForm::text('Small', 'sm-offset')
+                                            {!! BootForm::inputGroup('Small', 'sm-offset')
+                                                ->type('text')
                                                 ->class('slider')
-                                                ->data(config('clara.page.slider.purple')) !!}
+                                                ->data(config('clara.page.slider.purple'))
+                                                ->beforeAddon('<input class="minimal" type="checkbox">') !!}
 
-                                            {!! BootForm::text('Medium', 'md-offset')
+                                            {!! BootForm::inputGroup('Medium', 'md-offset')
+                                                ->type('text')
                                                 ->class('slider')
-                                                ->data(config('clara.page.slider.purple')) !!}
+                                                ->data(config('clara.page.slider.purple'))
+                                                ->beforeAddon('<input class="minimal" type="checkbox">') !!}
 
-                                            {!! BootForm::text('Large', 'lg-offset')
+                                            {!! BootForm::inputGroup('Large', 'lg-offset')
+                                                ->type('text')
                                                 ->class('slider')
-                                                ->data(config('clara.page.slider.purple')) !!}
+                                                ->data(config('clara.page.slider.purple'))
+                                                ->beforeAddon('<input class="minimal" type="checkbox">') !!}
                                         </div>
                                     </div>
                                 </div>
@@ -387,6 +416,9 @@
     <!-- Select 2 -->
     {!! Html::script('bower_components/select2/dist/js/select2.full.min.js') !!}
     
+    <!-- iCheck 1.0.1 -->
+    {!! Html::script('adminlte/plugins/iCheck/icheck.min.js') !!}
+    
     <!-- Draggable -->
     {!! Html::script('bower_components/jquery-ui/jquery-ui.min.js') !!}
     
@@ -431,6 +463,12 @@
                     cache: true
                 },
                 them: 'bootstrap'
+            });
+            
+            //iCheck for checkbox and radio inputs
+            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+                checkboxClass: 'icheckbox_minimal-blue',
+                radioClass   : 'iradio_minimal-blue'
             });
         });    
     </script>
@@ -590,7 +628,15 @@
                 }                
             });
             
+            //Editing column
             $('.slider').bootstrapSlider();
+            
+            $('.minimal').on('change', function(){
+                if(!this.checked) 
+                {
+                    
+                }
+            });
             
             $('#submit-modal-text').on('click', function(){
                 oCurrentElement.removeClass (function (index, className) {

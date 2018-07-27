@@ -26,6 +26,9 @@ return [
     'modal_data_title'  => 'Data parameter',
     'modal_text_title'  => 'Text parameter',
     'size'              => 'Size',
+    'width'             => 'Width',
+    'height'            => 'Height',
+    'offset'            => 'Offset',
     'advanced'          => 'Advanced parameter',
     'created_at'        => 'Created at',
     'updated_at'        => 'Updated at'

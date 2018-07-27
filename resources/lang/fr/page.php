@@ -25,6 +25,9 @@ return [
     'modal_image_title' => 'Paramétrage de l\'image',
     'modal_data_title'  => 'Paramétrage des données',
     'size'              => 'Taille',
+    'width'             => 'Largeur',
+    'height'            => 'Hauteur',
+    'offset'            => 'Décalage',
     'advanced'          => 'Paramètres avancés',
     'created_at'        => 'Created at',
     'updated_at'        => 'Updated at'
