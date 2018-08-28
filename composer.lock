@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "content-hash": "4a4b664df888ab7b58a18dbdac6c8200",
@@ -478,16 +478,16 @@
         },
         {
             "name": "ceddyg/clara-entity-generator",
-            "version": "2.3.1",
+            "version": "2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CeddyG/clara-entity-generator.git",
-                "reference": "44d019bce8828c7bbe09f32ebd44ceec9a779d62"
+                "reference": "758a082b8e6bf468d335d54410e96b4b7539aa6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CeddyG/clara-entity-generator/zipball/44d019bce8828c7bbe09f32ebd44ceec9a779d62",
-                "reference": "44d019bce8828c7bbe09f32ebd44ceec9a779d62",
+                "url": "https://api.github.com/repos/CeddyG/clara-entity-generator/zipball/758a082b8e6bf468d335d54410e96b4b7539aa6c",
+                "reference": "758a082b8e6bf468d335d54410e96b4b7539aa6c",
                 "shasum": ""
             },
             "require": {
@@ -523,20 +523,20 @@
                 "entity",
                 "laravel"
             ],
-            "time": "2018-07-24T07:47:24+00:00"
+            "time": "2018-07-25T09:46:56+00:00"
         },
         {
             "name": "ceddyg/clara-installer",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CeddyG/clara-installer.git",
-                "reference": "f6bda2957de36cfb9fd467f26e378065010b471f"
+                "reference": "90c8e7c88a1ad0ea0a5ca9fff8f59eddcea7d3af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CeddyG/clara-installer/zipball/f6bda2957de36cfb9fd467f26e378065010b471f",
-                "reference": "f6bda2957de36cfb9fd467f26e378065010b471f",
+                "url": "https://api.github.com/repos/CeddyG/clara-installer/zipball/90c8e7c88a1ad0ea0a5ca9fff8f59eddcea7d3af",
+                "reference": "90c8e7c88a1ad0ea0a5ca9fff8f59eddcea7d3af",
                 "shasum": ""
             },
             "require": {
@@ -574,7 +574,7 @@
                 "laravel",
                 "sentinel"
             ],
-            "time": "2018-05-06T19:32:15+00:00"
+            "time": "2018-07-31T20:01:27+00:00"
         },
         {
             "name": "ceddyg/query-builder-repository",
@@ -1352,16 +1352,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.6.28",
+            "version": "v5.6.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "40ba2ee0e61cb4bc3c9f1dab04908e6acf06b86f"
+                "reference": "acc6b5c54ab196d3358f60acc5f55d9ebaaccc02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/40ba2ee0e61cb4bc3c9f1dab04908e6acf06b86f",
-                "reference": "40ba2ee0e61cb4bc3c9f1dab04908e6acf06b86f",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/acc6b5c54ab196d3358f60acc5f55d9ebaaccc02",
+                "reference": "acc6b5c54ab196d3358f60acc5f55d9ebaaccc02",
                 "shasum": ""
             },
             "require": {
@@ -1487,7 +1487,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-07-17T14:15:36+00:00"
+            "time": "2018-07-26T16:01:26+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -3685,16 +3685,16 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v2.5.0",
+            "version": "v2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "6ae3e2e6494bb5e58c2decadafc3de7f1453f70a"
+                "reference": "8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/6ae3e2e6494bb5e58c2decadafc3de7f1453f70a",
-                "reference": "6ae3e2e6494bb5e58c2decadafc3de7f1453f70a",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e",
+                "reference": "8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e",
                 "shasum": ""
             },
             "require": {
@@ -3731,7 +3731,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2018-07-01T10:25:50+00:00"
+            "time": "2018-07-29T20:33:41+00:00"
         }
     ],
     "packages-dev": [

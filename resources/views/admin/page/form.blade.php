@@ -265,25 +265,25 @@
                                                 ->type('text')
                                                 ->class('slider')
                                                 ->data(config('clara.page.slider.aqua'))
-                                                ->beforeAddon('<input class="minimal" type="checkbox">') !!}
+                                                ->beforeAddon('<input class="check-size minimal" type="checkbox" id="check-size-xs">') !!}
 
                                             {!! BootForm::inputGroup('Small', 'sm-size')
                                                 ->type('text')
                                                 ->class('slider')
                                                 ->data(config('clara.page.slider.aqua'))
-                                                ->beforeAddon('<input class="minimal" type="checkbox">') !!}
+                                                ->beforeAddon('<input class="check-size minimal" type="checkbox" id="check-size-sm">') !!}
 
                                             {!! BootForm::inputGroup('Medium', 'md-size')
                                                 ->type('text')
                                                 ->class('slider')
                                                 ->data(config('clara.page.slider.aqua'))
-                                                ->beforeAddon('<input class="minimal" type="checkbox">') !!}
+                                                ->beforeAddon('<input class="check-size minimal" type="checkbox" id="check-size-md">') !!}
 
                                             {!! BootForm::inputGroup('Large', 'lg-size')
                                                 ->type('text')
                                                 ->class('slider')
                                                 ->data(config('clara.page.slider.aqua'))
-                                                ->beforeAddon('<input class="minimal" type="checkbox">') !!}
+                                                ->beforeAddon('<input class="check-size minimal" type="checkbox" id="check-size-lg">') !!}
                                         </div>
                                         
                                         <div class="col-xs-12 col-sm-6">
@@ -292,25 +292,25 @@
                                                 ->type('text')
                                                 ->class('slider')
                                                 ->data(config('clara.page.slider.purple'))
-                                                ->beforeAddon('<input class="minimal" type="checkbox">') !!}
+                                                ->beforeAddon('<input class="check-offset minimal" type="checkbox" id="check-offset-xs">') !!}
 
                                             {!! BootForm::inputGroup('Small', 'sm-offset')
                                                 ->type('text')
                                                 ->class('slider')
                                                 ->data(config('clara.page.slider.purple'))
-                                                ->beforeAddon('<input class="minimal" type="checkbox">') !!}
+                                                ->beforeAddon('<input class="check-offset minimal" type="checkbox" id="check-offset-sm">') !!}
 
                                             {!! BootForm::inputGroup('Medium', 'md-offset')
                                                 ->type('text')
                                                 ->class('slider')
                                                 ->data(config('clara.page.slider.purple'))
-                                                ->beforeAddon('<input class="minimal" type="checkbox">') !!}
+                                                ->beforeAddon('<input class="check-offset minimal" type="checkbox" id="check-offset-md">') !!}
 
                                             {!! BootForm::inputGroup('Large', 'lg-offset')
                                                 ->type('text')
                                                 ->class('slider')
                                                 ->data(config('clara.page.slider.purple'))
-                                                ->beforeAddon('<input class="minimal" type="checkbox">') !!}
+                                                ->beforeAddon('<input class="check-offset minimal" type="checkbox" id="check-offset-lg">') !!}
                                         </div>
                                     </div>
                                 </div>
@@ -333,7 +333,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{ __('general.close') }}</button>
-                    <button type="button" class="btn btn-primary" id="submit-modal-text">{{ __('general.save') }}</button>
+                    <button type="button" class="btn btn-primary" id="submit-modal-col">{{ __('general.save') }}</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -343,7 +343,7 @@
     <!-- /.modal -->
     
     <div class="modal fade" id="modal-text">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('general.close') }}">
@@ -352,11 +352,11 @@
                     <h4 class="modal-title">{{ __('page.modal_text_title') }}</h4>
                 </div>
                 <div class="modal-body">
-                    <p>One fine body&hellip;</p>
+                    <textarea class="ckeditor" id="text-content"></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{ __('general.close') }}</button>
-                    <button type="button" class="btn btn-primary">{{ __('general.save') }}</button>
+                    <button type="button" class="btn btn-primary" id="submit-modal-text">{{ __('general.save') }}</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -496,7 +496,15 @@
                             sizeXs = aClass[i].substring(7);
                         }
                     }
+                    
+                    $('#check-size-xs').iCheck('check');
+                    $('#xs-size').bootstrapSlider('enable');
                 }
+                else
+                {
+                    $('#check-size-xs').iCheck('uncheck');
+                    $('#xs-size').bootstrapSlider('disable');
+                }    
                 
                 if (oCurrentElement.is('[class*=col-sm]'))
                 {
@@ -507,10 +515,15 @@
                             sizeSm = aClass[i].substring(7);
                         }
                     }
+                    
+                    $('#check-size-sm').iCheck('check');
+                    $('#sm-size').bootstrapSlider('enable');
                 }
                 else
                 {
                     sizeSm = sizeXs;
+                    $('#check-size-sm').iCheck('uncheck');
+                    $('#sm-size').bootstrapSlider('disable');
                 }
                 
                 if (oCurrentElement.is('[class*=col-md]'))
@@ -522,10 +535,15 @@
                             sizeMd = aClass[i].substring(7);
                         }
                     }
+                    
+                    $('#check-size-md').iCheck('check');
+                    $('#md-size').bootstrapSlider('enable');
                 }
                 else
                 {
                     sizeMd = sizeSm;
+                    $('#check-size-md').iCheck('uncheck');
+                    $('#md-size').bootstrapSlider('disable');
                 }
                 
                 if (oCurrentElement.is('[class*=col-lg]'))
@@ -537,10 +555,15 @@
                             sizeLg = aClass[i].substring(7);
                         }
                     }
+                    
+                    $('#check-size-lg').iCheck('check');
+                    $('#lg-size').bootstrapSlider('enable');
                 }
                 else
                 {
                     sizeLg = sizeMd;
+                    $('#check-size-lg').iCheck('uncheck');
+                    $('#lg-size').bootstrapSlider('disable');
                 }
                 
                 $('#xs-size').bootstrapSlider('setValue', parseInt(sizeXs), true);
@@ -630,29 +653,99 @@
             
             //Editing column
             $('.slider').bootstrapSlider();
+            //TODO
+            $('.slider').on('change', function(){
+                var oElement    = $(this);
+                var bCurrentEl  = false;
+                var iNewValue   = $(this).val();
+                
+                $('.slider').each(function(){
+                    var oCheckBox = $(this).parents('.input-group').find('input.check-size').first();
+console.log(!oCheckBox.is(':checked') && bCurrentEl);
+                    if (!oCheckBox.is(':checked') && bCurrentEl)
+                    {
+                        $(this).bootstrapSlider('setValue', parseInt(iNewValue), true);
+                    }
+ console.log(oElement == $(this)[0]);                   
+                    if (oElement == $(this)[0])
+                    {
+                        bCurrentEl = true;
+                    }
+                });
+            });
             
-            $('.minimal').on('change', function(){
+            $('.check-size').on('ifChanged', function(){
                 if(!this.checked) 
                 {
+                    var oElement    = $(this)[0];
+                    var iNewValue   = 12;
+                    var bCurrentEl  = false;
                     
+                    $('.check-size').each(function(){
+                        if (oElement == $(this)[0])
+                        {
+                            bCurrentEl = true;
+                        }
+                        
+                        if (this.checked && !bCurrentEl)
+                        {
+                            iNewValue = $(this).parents('.input-group').find('input.slider').first().val();
+                        }
+                    });
+                    
+                    $(this)
+                        .parents('.input-group')
+                        .find('input.slider')
+                        .first()
+                        .bootstrapSlider('setValue', parseInt(iNewValue), true)
+                        .bootstrapSlider('disable');
+                }
+                else
+                {
+                    $(this)
+                        .parents('.input-group')
+                        .find('input.slider')
+                        .first()
+                        .bootstrapSlider('enable');
                 }
             });
             
-            $('#submit-modal-text').on('click', function(){
+            $('#submit-modal-col').on('click', function(){
                 oCurrentElement.removeClass (function (index, className) {
                     return (className.match (/(^|\s)col-\S+/g) || []).join(' ');
                 });
                 
-                var sClass = '';
+                var aClass = [];
                 
-                sClass += 'col-xs-'+$('#xs-size').val();
-                sClass += ' col-sm-'+$('#sm-size').val();
-                sClass += ' col-md-'+$('#md-size').val();
-                sClass += ' col-lg-'+$('#lg-size').val();
+                if ($('#check-size-xs').is(':checked'))
+                {
+                    aClass.push('col-xs-'+$('#xs-size').val());
+                }
                 
-                oCurrentElement.addClass(sClass);
+                if ($('#check-size-sm').is(':checked'))
+                {
+                    aClass.push('col-sm-'+$('#sm-size').val());
+                }
+                
+                if ($('#check-size-md').is(':checked'))
+                {
+                    aClass.push('col-md-'+$('#md-size').val());
+                }
+                
+                if ($('#check-size-lg').is(':checked'))
+                {
+                    aClass.push('col-lg-'+$('#lg-size').val());
+                }
+                
+                oCurrentElement.addClass(aClass.join(' '));
                 
                 $('#modal-col').modal('hide');
+            });
+            
+            $('#submit-modal-text').on('click', function(){
+                oCurrentElement.html(CKEDITOR.instances['text-content'].getData());
+                
+                $('#modal-text').modal('hide');
             });
         });
     </script> 
