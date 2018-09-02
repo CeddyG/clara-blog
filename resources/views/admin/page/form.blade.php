@@ -263,26 +263,26 @@
                                             <h4 class="text-center">{{ __('page.width') }}</h4>
                                             {!! BootForm::inputGroup('X-Small', 'xs-size')
                                                 ->type('text')
-                                                ->class('slider')
-                                                ->data(config('clara.page.slider.aqua')+['size' => 'xs'])
+                                                ->class('slider slider-size')
+                                                ->data(config('clara.page.slider.aqua')+['size' => 'xs', 'type' => 'size'])
                                                 ->beforeAddon('<input class="check-size minimal" type="checkbox" id="check-size-xs" data-size="xs">') !!}
 
                                             {!! BootForm::inputGroup('Small', 'sm-size')
                                                 ->type('text')
-                                                ->class('slider')
-                                                ->data(config('clara.page.slider.aqua')+['size' => 'sm'])
+                                                ->class('slider slider-size')
+                                                ->data(config('clara.page.slider.aqua')+['size' => 'sm', 'type' => 'size'])
                                                 ->beforeAddon('<input class="check-size minimal" type="checkbox" id="check-size-sm" data-size="sm">') !!}
 
                                             {!! BootForm::inputGroup('Medium', 'md-size')
                                                 ->type('text')
-                                                ->class('slider')
-                                                ->data(config('clara.page.slider.aqua')+['size' => 'md'])
+                                                ->class('slider slider-size')
+                                                ->data(config('clara.page.slider.aqua')+['size' => 'md', 'type' => 'size'])
                                                 ->beforeAddon('<input class="check-size minimal" type="checkbox" id="check-size-md" data-size="md">') !!}
 
                                             {!! BootForm::inputGroup('Large', 'lg-size')
                                                 ->type('text')
-                                                ->class('slider')
-                                                ->data(config('clara.page.slider.aqua')+['size' => 'lg'])
+                                                ->class('slider slider-size')
+                                                ->data(config('clara.page.slider.aqua')+['size' => 'lg', 'type' => 'size'])
                                                 ->beforeAddon('<input class="check-size minimal" type="checkbox" id="check-size-lg" data-size="lg">') !!}
                                         </div>
                                         
@@ -290,27 +290,27 @@
                                             <h4 class="text-center">{{ __('page.offset') }}</h4>
                                             {!! BootForm::inputGroup('X-Small', 'xs-offset')
                                                 ->type('text')
-                                                ->class('slider')
-                                                ->data(config('clara.page.slider.purple'))
-                                                ->beforeAddon('<input class="check-offset minimal" type="checkbox" id="check-offset-xs">') !!}
+                                                ->class('slider slider-offset')
+                                                ->data(config('clara.page.slider.purple')+['size' => 'xs', 'type' => 'offset'])
+                                                ->beforeAddon('<input class="check-offset minimal" type="checkbox" id="check-offset-xs" data-size="xs">') !!}
 
                                             {!! BootForm::inputGroup('Small', 'sm-offset')
                                                 ->type('text')
-                                                ->class('slider')
-                                                ->data(config('clara.page.slider.purple'))
-                                                ->beforeAddon('<input class="check-offset minimal" type="checkbox" id="check-offset-sm">') !!}
+                                                ->class('slider slider-offset')
+                                                ->data(config('clara.page.slider.purple')+['size' => 'sm', 'type' => 'offset'])
+                                                ->beforeAddon('<input class="check-offset minimal" type="checkbox" id="check-offset-sm" data-size="sm">') !!}
 
                                             {!! BootForm::inputGroup('Medium', 'md-offset')
                                                 ->type('text')
-                                                ->class('slider')
-                                                ->data(config('clara.page.slider.purple'))
-                                                ->beforeAddon('<input class="check-offset minimal" type="checkbox" id="check-offset-md">') !!}
+                                                ->class('slider slider-offset')
+                                                ->data(config('clara.page.slider.purple')+['size' => 'md', 'type' => 'offset'])
+                                                ->beforeAddon('<input class="check-offset minimal" type="checkbox" id="check-offset-md" data-size="md">') !!}
 
                                             {!! BootForm::inputGroup('Large', 'lg-offset')
                                                 ->type('text')
-                                                ->class('slider')
-                                                ->data(config('clara.page.slider.purple'))
-                                                ->beforeAddon('<input class="check-offset minimal" type="checkbox" id="check-offset-lg">') !!}
+                                                ->class('slider slider-offset')
+                                                ->data(config('clara.page.slider.purple')+['size' => 'lg', 'type' => 'offset'])
+                                                ->beforeAddon('<input class="check-offset minimal" type="checkbox" id="check-offset-lg" data-size="lg">') !!}
                                         </div>
                                     </div>
                                 </div>
@@ -491,7 +491,7 @@
                     {
                         for (var j = 0; j < nbClass; j++) 
                         {
-                            if (aClass[j].substring(0,7) == 'col-'+aSize[i]+'-')
+                            if (aClass[j].substring(0,7) == 'col-'+aSize[i]+'-' && aClass[j].substring(0,14) != 'col-'+aSize[i]+'-offset-')
                             {
                                 iSize = aClass[j].substring(7);
                             }
@@ -513,13 +513,13 @@
                 for(var i = 0; i < aSize.length; i++)
                 {
                     //Offset
-                    if (oCurrentElement.is('[class*=offset-'+aSize[i]+']'))
+                    if (oCurrentElement.is('[class*=col-'+aSize[i]+'-offset]'))
                     {
                         for (var j = 0; j < nbClass; j++) 
                         {
-                            if (aClass[j].substring(0,7) == 'offset-'+aSize[i]+'-')
+                            if (aClass[j].substring(0,14) == 'col-'+aSize[i]+'-offset-')
                             {
-                                iSize = aClass[j].substring(7);
+                                iSize = aClass[j].substring(14);
                             }
                         }
 
@@ -622,8 +622,9 @@
                 var oElement    = $(this);
                 var bCurrentEl  = false;
                 var iNewValue   = $(this).val();
+                var sType       = $(this).data('type');
                 
-                $('input.slider').each(function(){
+                $('input.slider-'+sType).each(function(){
                     var oCheckBox = $('#check-size-'+$(this).data('size'));
                     
                     if (oCheckBox.is(':checked') && bCurrentEl)
@@ -643,8 +644,18 @@
                 });
             });
             
-            $('.check-size').on('ifChanged', function(){
+            $('.check-size, .check-offset').on('ifChanged', function(){
                 var size        = $(this).data('size');
+                    
+                if ($(this).is('[class*=check-size]'))
+                {
+                    var sType = 'size';
+                }
+                    
+                if ($(this).is('[class*=check-offset]'))
+                {
+                    var sType = 'offset';
+                }
                     
                 if(!this.checked) 
                 {
@@ -652,7 +663,7 @@
                     var iNewValue   = 12;
                     var bCurrentEl  = false;
                     
-                    $('.check-size').each(function(){
+                    $('.check-'+sType).each(function(){
                         if (oElement[0] == $(this)[0])
                         {
                             bCurrentEl = true;
@@ -664,13 +675,13 @@
                         }
                     });
                     
-                    $('#'+size+'-size')
+                    $('#'+size+'-'+sType)
                         .bootstrapSlider('setValue', parseInt(iNewValue), true)
                         .bootstrapSlider('disable');
                 
                     var bCurrentEl  = false;
-                    $('input.slider').each(function(){
-                        var oCheckBox = $('#check-size-'+$(this).data('size'));
+                    $('input.slider-'+sType).each(function(){
+                        var oCheckBox = $('#check-'+sType+'-'+$(this).data('size'));
 
                         if (oCheckBox.is(':checked') && bCurrentEl)
                         {
@@ -690,7 +701,7 @@
                 }
                 else
                 {
-                    $('#'+size+'-size').bootstrapSlider('enable');
+                    $('#'+size+'-'+sType).bootstrapSlider('enable');
                 }
             });
             
