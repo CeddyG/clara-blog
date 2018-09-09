@@ -28,7 +28,11 @@ return [
     'width'             => 'Largeur',
     'height'            => 'Hauteur',
     'offset'            => 'Décalage',
+    'text'              => 'Texte',
     'advanced'          => 'Paramètres avancés',
+    'class'             => 'Classes',
+    'style'             => 'Styles',
+    'attribute'         => 'Attributs',
     'created_at'        => 'Created at',
     'updated_at'        => 'Updated at'
 ];

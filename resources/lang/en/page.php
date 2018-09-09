@@ -29,7 +29,11 @@ return [
     'width'             => 'Width',
     'height'            => 'Height',
     'offset'            => 'Offset',
+    'text'              => 'Text',
     'advanced'          => 'Advanced parameter',
+    'class'             => 'Classes',
+    'style'             => 'Styles',
+    'attribute'         => 'Attributes',
     'created_at'        => 'Created at',
     'updated_at'        => 'Updated at'
 ];

@@ -226,7 +226,7 @@
                     <h4 class="modal-title">{{ __('page.modal_row_title') }}</h4>
                 </div>
                 <div class="modal-body">
-                    
+                    @include('admin.page.partials.settings', ['sType' => 'row'])
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{ __('general.close') }}</button>
@@ -316,13 +316,7 @@
                                 </div>
                                 <!-- /.tab-pane -->
                                 <div class="tab-pane" id="tab_2">
-                                    The European languages are members of the same family. Their separate existence is a myth.
-                                    For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
-                                    in their grammar, their pronunciation and their most common words. Everyone realizes why a
-                                    new common language would be desirable: one could refuse to pay expensive translators. To
-                                    achieve this, it would be necessary to have uniform grammar, pronunciation and more common
-                                    words. If several languages coalesce, the grammar of the resulting language is more simple
-                                    and regular than that of the individual languages.
+                                    @include('admin.page.partials.settings', ['sType' => 'col'])
                                 </div>
                                 <!-- /.tab-pane -->
                             </div>
@@ -352,7 +346,22 @@
                     <h4 class="modal-title">{{ __('page.modal_text_title') }}</h4>
                 </div>
                 <div class="modal-body">
-                    <textarea class="ckeditor" id="text-content"></textarea>
+                    <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab_3" data-toggle="tab">{{ __('page.text') }}</a></li>
+                                <li><a href="#tab_4" data-toggle="tab">{{ __('page.advanced') }}</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_3">
+                                    <textarea class="ckeditor" id="text-content"></textarea>
+                                </div>
+                                <!-- /.tab-pane -->
+                                <div class="tab-pane" id="tab_4">
+                                    @include('admin.page.partials.settings', ['sType' => 'text'])
+                                </div>
+                                <!-- /.tab-pane -->
+                            </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{ __('general.close') }}</button>
@@ -483,11 +492,13 @@
                 var nbClass = aClass.length;
                 var iSize   = 12;
                 var aSize   = ['xs', 'sm', 'md', 'lg'];
-                
+                console.log(oCurrentElement);
                 //Size
                 for(var i = 0; i < aSize.length; i++)
                 {
-                    if (oCurrentElement.is('[class*=col-'+aSize[i]+']'))
+                    var sReg = new RegExp('col-'+aSize[i]+'-(\\d+)');
+                    //if (oCurrentElement.is('[class*=col-'+aSize[i]+']'))
+                    if (oCurrentElement[0].className.match(sReg) !== null)
                     {
                         for (var j = 0; j < nbClass; j++) 
                         {
@@ -601,6 +612,7 @@
                 
                 if ($(this).hasClass('template-content-text'))
                 {
+                    CKEDITOR.instances['text-content'].setData($(this).html());
                     $('#modal-text').modal();
                 }
                 
@@ -710,26 +722,20 @@
                     return (className.match (/(^|\s)col-\S+/g) || []).join(' ');
                 });
                 
-                var aClass = [];
+                var aSize   = ['xs', 'sm', 'md', 'lg'];                
+                var aClass  = [];
                 
-                if ($('#check-size-xs').is(':checked'))
+                for(var i = 0; i < aSize.length; i++)
                 {
-                    aClass.push('col-xs-'+$('#xs-size').val());
-                }
-                
-                if ($('#check-size-sm').is(':checked'))
-                {
-                    aClass.push('col-sm-'+$('#sm-size').val());
-                }
-                
-                if ($('#check-size-md').is(':checked'))
-                {
-                    aClass.push('col-md-'+$('#md-size').val());
-                }
-                
-                if ($('#check-size-lg').is(':checked'))
-                {
-                    aClass.push('col-lg-'+$('#lg-size').val());
+                    if ($('#check-size-'+aSize[i]).is(':checked'))
+                    {
+                        aClass.push('col-'+aSize[i]+'-'+$('#'+aSize[i]+'-size').val());
+                    }
+                    
+                    if ($('#check-offset-'+aSize[i]).is(':checked'))
+                    {
+                        aClass.push('col-'+aSize[i]+'-offset-'+$('#'+aSize[i]+'-offset').val());
+                    }
                 }
                 
                 oCurrentElement.addClass(aClass.join(' '));
