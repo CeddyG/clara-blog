@@ -116,6 +116,12 @@
         {
             display: none;
         }
+        
+        .setting-input-row
+        {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
     </style>
 @stop
 
@@ -217,7 +223,7 @@
     </div>
     
     <div class="modal fade" id="modal-row">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('general.close') }}">
@@ -375,7 +381,7 @@
     <!-- /.modal -->
     
     <div class="modal fade" id="modal-image">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('general.close') }}">
@@ -398,7 +404,7 @@
     <!-- /.modal -->
     
     <div class="modal fade" id="modal-data">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('general.close') }}">
@@ -492,12 +498,12 @@
                 var nbClass = aClass.length;
                 var iSize   = 12;
                 var aSize   = ['xs', 'sm', 'md', 'lg'];
-                console.log(oCurrentElement);
+                
                 //Size
                 for(var i = 0; i < aSize.length; i++)
                 {
                     var sReg = new RegExp('col-'+aSize[i]+'-(\\d+)');
-                    //if (oCurrentElement.is('[class*=col-'+aSize[i]+']'))
+                    
                     if (oCurrentElement[0].className.match(sReg) !== null)
                     {
                         for (var j = 0; j < nbClass; j++) 
@@ -627,7 +633,9 @@
                 }                
             });
             
-            //Editing column
+            /**
+             * Editing column
+             */
             $('.slider').bootstrapSlider();
             
             $('.slider').on('slideStop', function(){
@@ -717,6 +725,63 @@
                 }
             });
             
+            /**
+             * Editing settings
+             */
+            $('.add-line-class').on('click', function(){
+                $(this).parent().append(
+                    '<div class="row setting-input-row">'
+                    +'<div class="col col-xs-8">'
+                    +'<input value="" name="class[]" class="form-control" type="text" />'
+                    +'</div>'
+                    +'<div class="col col-xs-4">'
+                    +'<button class="btn btn-danger del-column" type="button">'
+                    +'<i class="glyphicon glyphicon-trash"></i>'
+                    +'</button>'
+                    +'</div>'
+                    +'</div>'
+                );
+            });
+            
+            $('.add-line-style').on('click', function(){
+                $(this).parent().append(
+                    '<div class="row setting-input-row">'
+                    +'<div class="col col-xs-4">'
+                    +'<input value="" name="style[]" class="form-control" type="text" />'
+                    +'</div>'
+                    +'<div class="col col-xs-4">'
+                    +'<input value="" name="style-value[]" class="form-control" type="text" />'
+                    +'</div>'
+                    +'<div class="col col-xs-4">'
+                    +'<button class="btn btn-danger del-column" type="button">'
+                    +'<i class="glyphicon glyphicon-trash"></i>'
+                    +'</button>'
+                    +'</div>'
+                    +'</div>'
+                );
+            });
+            
+            $('.add-line-attribute').on('click', function(){
+                $(this).parent().append(
+                    '<div class="row setting-input-row">'
+                    +'<div class="col col-xs-4">'
+                    +'<input value="" name="attribute[]" class="form-control" type="text" />'
+                    +'</div>'
+                    +'<div class="col col-xs-4">'
+                    +'<input value="" name="attribute-value[]" class="form-control" type="text" />'
+                    +'</div>'
+                    +'<div class="col col-xs-4">'
+                    +'<button class="btn btn-danger del-column" type="button">'
+                    +'<i class="glyphicon glyphicon-trash"></i>'
+                    +'</button>'
+                    +'</div>'
+                    +'</div>'
+                );
+            });
+            
+            /**
+             * Submitting
+             */
             $('#submit-modal-col').on('click', function(){
                 oCurrentElement.removeClass (function (index, className) {
                     return (className.match (/(^|\s)col-\S+/g) || []).join(' ');
