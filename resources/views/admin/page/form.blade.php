@@ -236,7 +236,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{ __('general.close') }}</button>
-                    <button type="button" class="btn btn-primary">{{ __('general.save') }}</button>
+                    <button type="button" class="btn btn-primary" id="submit-modal-row">{{ __('general.save') }}</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -491,6 +491,16 @@
     <script type="text/javascript">
         $(document).ready(function() {
             var oCurrentElement = null;
+            var aClassNoRemove  = [
+                'row',
+                'col',
+                'template-container',
+                'ui-droppable',
+                'template-content-render',
+                'template-content-text',
+                'template-content-image',
+                'template-content-data'
+            ];
             
             function buildModalCol()
             {
@@ -732,10 +742,10 @@
                 $(this).parent().append(
                     '<div class="row setting-input-row">'
                     +'<div class="col col-xs-8">'
-                    +'<input value="" name="class[]" class="form-control" type="text" />'
+                    +'<input value="" name="class[]" class="form-control setting-class" type="text" />'
                     +'</div>'
                     +'<div class="col col-xs-4">'
-                    +'<button class="btn btn-danger del-column" type="button">'
+                    +'<button class="btn btn-danger del-setting" type="button">'
                     +'<i class="glyphicon glyphicon-trash"></i>'
                     +'</button>'
                     +'</div>'
@@ -753,7 +763,7 @@
                     +'<input value="" name="style-value[]" class="form-control" type="text" />'
                     +'</div>'
                     +'<div class="col col-xs-4">'
-                    +'<button class="btn btn-danger del-column" type="button">'
+                    +'<button class="btn btn-danger del-setting" type="button">'
                     +'<i class="glyphicon glyphicon-trash"></i>'
                     +'</button>'
                     +'</div>'
@@ -771,7 +781,7 @@
                     +'<input value="" name="attribute-value[]" class="form-control" type="text" />'
                     +'</div>'
                     +'<div class="col col-xs-4">'
-                    +'<button class="btn btn-danger del-column" type="button">'
+                    +'<button class="btn btn-danger del-setting" type="button">'
                     +'<i class="glyphicon glyphicon-trash"></i>'
                     +'</button>'
                     +'</div>'
@@ -779,13 +789,15 @@
                 );
             });
             
+            $('body').on('click', '.del-setting', function(){
+                $(this).closest('.setting-input-row').remove();
+            });
+            
             /**
              * Submitting
              */
             $('#submit-modal-col').on('click', function(){
-                oCurrentElement.removeClass (function (index, className) {
-                    return (className.match (/(^|\s)col-\S+/g) || []).join(' ');
-                });
+                setSettings('col');
                 
                 var aSize   = ['xs', 'sm', 'md', 'lg'];                
                 var aClass  = [];
@@ -808,11 +820,35 @@
                 $('#modal-col').modal('hide');
             });
             
+            $('#submit-modal-row').on('click', function(){
+                setSettings('row');
+                
+                $('#modal-row').modal('hide');
+            });
+            
             $('#submit-modal-text').on('click', function(){
                 oCurrentElement.html(CKEDITOR.instances['text-content'].getData());
+                setSettings('text');
                 
                 $('#modal-text').modal('hide');
             });
+            
+            function setSettings(sType)
+            {
+                var aClass = oCurrentElement.attr('class').split(' ');
+                
+                for(var i = 0; i < aClass.length; i++)
+                {
+                    if (aClassNoRemove.indexOf(aClass[i]) == -1)
+                    {
+                        oCurrentElement.removeClass(aClass[i]);
+                    }
+                }
+                
+                $('#setting-'+sType).find('.setting-class').each(function(){
+                    oCurrentElement.addClass($(this).val());
+                });
+            }
         });
     </script> 
 
