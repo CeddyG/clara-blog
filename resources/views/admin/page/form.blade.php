@@ -75,6 +75,11 @@
             background-color: #00a65a;
         }
         
+        .template-content-image img
+        {
+            width: 100%;
+        }
+        
         .template-content-data
         {
             background-color: #f39c12;
@@ -390,11 +395,26 @@
                     <h4 class="modal-title">{{ __('page.modal_image_title') }}</h4>
                 </div>
                 <div class="modal-body">
-                    <p>One fine body&hellip;</p>
+                    <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab_5" data-toggle="tab">{{ __('page.image') }}</a></li>
+                                <li><a href="#tab_6" data-toggle="tab">{{ __('page.advanced') }}</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_5">
+                                    {!! BootForm::text(__('page.url'), 'image_url') !!}
+                                </div>
+                                <!-- /.tab-pane -->
+                                <div class="tab-pane" id="tab_6">
+                                    @include('admin.page.partials.settings', ['sType' => 'image'])
+                                </div>
+                                <!-- /.tab-pane -->
+                            </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{ __('general.close') }}</button>
-                    <button type="button" class="btn btn-primary">{{ __('general.save') }}</button>
+                    <button type="button" class="btn btn-primary" id="submit-modal-image">{{ __('general.save') }}</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -576,6 +596,13 @@
                 CKEDITOR.instances['text-content'].setData(oCurrentElement.html());
             }
             
+            function buildModalImage()
+            {
+                buildSettings('image');
+                
+                $('#image_url').val(oCurrentElement.attr('src'));
+            }
+            
             function buildSettings(sType)
             {
                 $('#setting-'+sType).find('.setting-input-row').remove();
@@ -585,21 +612,26 @@
                 var oSettingAttribute   = $('#setting-'+sType).find('.setting-attribute');
                 
                 //Class
-                var aClass  = oCurrentElement.attr('class').split(' ');
-                var nbClass = aClass.length;
+                var sClass = oCurrentElement.attr('class');
                 
-                for(var i = 0; i < nbClass; i++)
+                if (typeof sClass !== typeof undefined && sClass !== false) 
                 {
-                    if (aClassNoRemove.indexOf(aClass[i]) == -1 && !aClass[i].match(/(^|\s)col-\S+/g))
+                    var aClass  = oCurrentElement.attr('class').split(' ');
+                    var nbClass = aClass.length;
+
+                    for(var i = 0; i < nbClass; i++)
                     {
-                        oSettingClass.append(buildClassSetting(aClass[i]));
+                        if (aClassNoRemove.indexOf(aClass[i]) == -1 && !aClass[i].match(/(^|\s)col-\S+/g))
+                        {
+                            oSettingClass.append(buildClassSetting(aClass[i]));
+                        }
                     }
                 }
                 
                 //Style
-                var attr = oCurrentElement.attr('style');
+                var sAttr = oCurrentElement.attr('style');
                 
-                if (typeof attr !== typeof undefined && attr !== false) 
+                if (typeof sAttr !== typeof undefined && sAttr !== false) 
                 {
                     var aStyle          = oCurrentElement.attr('style').split(';');
                     var nbStyle         = aStyle.length;
@@ -618,7 +650,7 @@
                 //Attributes
                 oCurrentElement.each(function() {
                     $.each(this.attributes,function(i,a){
-                        if (a.name != 'class' && a.name != 'style')
+                        if (a.name != 'class' && a.name != 'style' && a.name != 'src')
                         {
                             oSettingAttribute.append(buildAttributeSetting(a.name, a.value));                            
                         }
@@ -700,7 +732,7 @@
                                             break;
                                         
                                         case 'template-image':
-                                            $(this).append('<div class="template-content-render template-content-image"></div>');
+                                            $(this).append('<div class="template-content-render template-content-image"><img src="" /></div>');
                                             break;
                                         
                                         case 'template-data':
@@ -732,7 +764,7 @@
                 $('#modal-col').modal();
             });
 
-            $('#content-zone').on('click', '.template-content-render', function(e){
+            $('#content-zone').on('click', '.template-content-render, .template-content-render *', function(e){
                 if (e.target !== this)
                     return;
                 
@@ -744,8 +776,23 @@
                     $('#modal-text').modal();
                 }
                 
+                if ($(this).parents('.template-content-text').length)
+                {
+                    oCurrentElement = $(this).parents('.template-content-text').eq(0);
+                    buildModalText();
+                    $('#modal-text').modal();
+                }
+                
                 if ($(this).hasClass('template-content-image'))
                 {
+                    oCurrentElement = $(this).find('img');
+                    buildModalImage();
+                    $('#modal-image').modal();
+                }
+                
+                if ($(this).parent().hasClass('template-content-image'))
+                {
+                    buildModalImage();
                     $('#modal-image').modal();
                 }
                 
@@ -906,19 +953,32 @@
                 $('#modal-text').modal('hide');
             });
             
+            $('#submit-modal-image').on('click', function(){
+                oCurrentElement.attr('src', $('#image_url').val());
+                
+                setSettings('image');
+                
+                $('#modal-image').modal('hide');
+            });
+            
             function setSettings(sType)
             {
                 //Class
-                var aClass = oCurrentElement.attr('class').split(' ');
+                var sClass = oCurrentElement.attr('class');
                 
-                for(var i = 0; i < aClass.length; i++)
+                if (typeof sClass !== typeof undefined && sClass !== false) 
                 {
-                    if (aClassNoRemove.indexOf(aClass[i]) == -1)
+                    var aClass = oCurrentElement.attr('class').split(' ');
+
+                    for(var i = 0; i < aClass.length; i++)
                     {
-                        oCurrentElement.removeClass(aClass[i]);
+                        if (aClassNoRemove.indexOf(aClass[i]) == -1)
+                        {
+                            oCurrentElement.removeClass(aClass[i]);
+                        }
                     }
                 }
-                
+
                 $('#setting-'+sType).find('.setting-input-class').each(function(){
                     oCurrentElement.addClass($(this).val());
                 });
@@ -949,11 +1009,15 @@
                 {
                     oCurrentElement.attr('style', aStyle.join('; '));
                 }
+                else
+                {
+                    oCurrentElement.removeAttr('style');
+                }
                 
                 //Attribute
                 oCurrentElement.each(function() {
                     $.each(this.attributes,function(i,a){
-                        if (a.name != 'class' && a.name != 'style')
+                        if (a.name != 'class' && a.name != 'style' && a.name != 'src')
                         {
                             oCurrentElement.removeAttr(a.name);                            
                         }

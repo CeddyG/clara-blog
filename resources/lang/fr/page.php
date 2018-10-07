@@ -29,6 +29,8 @@ return [
     'height'            => 'Hauteur',
     'offset'            => 'Décalage',
     'text'              => 'Texte',
+    'image'             => 'Image',
+    'url'               => 'URL',
     'advanced'          => 'Paramètres avancés',
     'class'             => 'Classes',
     'style'             => 'Styles',

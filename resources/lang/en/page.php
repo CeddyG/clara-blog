@@ -30,6 +30,8 @@ return [
     'height'            => 'Height',
     'offset'            => 'Offset',
     'text'              => 'Text',
+    'image'             => 'Image',
+    'url'               => 'URL',
     'advanced'          => 'Advanced parameter',
     'class'             => 'Classes',
     'style'             => 'Styles',
