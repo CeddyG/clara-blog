@@ -21,7 +21,8 @@ class Page extends Model
         'fk_page_category',
 		'fk_users',
 		'title_page',
-		'url_page'
+		'url_page',
+		'content_page'
     ];
     
 
@@ -33,11 +34,6 @@ class Page extends Model
     public function users()
     {
         return $this->belongsTo('App\Models\Users', 'fk_users');
-    }
-
-    public function row()
-    {
-        return $this->hasMany('App\Models\Row', 'fk_page');
     }
 
 

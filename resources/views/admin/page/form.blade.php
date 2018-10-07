@@ -131,6 +131,13 @@
 @stop
 
 @section('content')
+    @if(isset($oItem))
+        {!! BootForm::open()->action( route('admin.page.update', $oItem->id_page) )->put() !!}
+        {!! BootForm::bind($oItem) !!}
+    @else
+        {!! BootForm::open()->action( route('admin.page.store') )->post() !!}
+    @endif
+    
     <div class="row">
         <div class="col-sm-6">
             <br>
@@ -143,12 +150,7 @@
                     @endif
                 </div>
                 <div class="box-body">
-                    @if(isset($oItem))
-                        {!! BootForm::open()->action( route('admin.page.update', $oItem->id_page) )->put() !!}
-                        {!! BootForm::bind($oItem) !!}
-                    @else
-                        {!! BootForm::open()->action( route('admin.page.store') )->post() !!}
-                    @endif
+                    
 
                     {!! BootForm::text(__('page.title_page'), 'title_page') !!}
 
@@ -172,6 +174,12 @@
                     @endif
 
                     {!! BootForm::text(__('page.url_page'), 'url_page') !!}
+                    
+                    @if(isset($oItem))
+                        <textarea name="content_page" id="content_page" class="hidden">{!! $oItem->content_page !!}</textarea>
+                    @else
+                        <textarea name="content_page" id="content_page" class="hidden"></textarea>
+                    @endif
                 </div>
             </div>
         </div>
@@ -215,10 +223,15 @@
                     <h3 class="box-title">{{ __('page.content') }}</h3>
                 </div>
                 <div class="box-body"> 
-                    <div id="content-zone"></div>
+                    @if(isset($oItem))
+                        <div id="content-zone">{!! $oItem->content_page !!}</div>
+                    @else
+                        <div id="content-zone"></div>
+                    @endif
+                    
                     {!! BootForm::submit(__('general.send'), 'btn-primary')->addClass('pull-right') !!}
 
-                    {!! BootForm::close() !!}
+                    
                 </div>
             </div>
             <a href="javascript:history.back()" class="btn btn-primary">
@@ -260,7 +273,6 @@
                     <h4 class="modal-title">{{ __('page.modal_col_title') }}</h4>
                 </div>
                 <div class="modal-body">
-                    {!! BootForm::open() !!}
                         <!-- Custom Tabs -->
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
@@ -334,7 +346,6 @@
                             <!-- /.tab-content -->
                         </div>
                         <!-- nav-tabs-custom -->
-                    {!! BootForm::close() !!}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{ __('general.close') }}</button>
@@ -445,6 +456,7 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
+    {!! BootForm::close() !!}
 @stop
 
 @section('JS')
@@ -937,12 +949,14 @@
                 
                 oCurrentElement.addClass(aClass.join(' '));
                 
+                copyContent();
                 $('#modal-col').modal('hide');
             });
             
             $('#submit-modal-row').on('click', function(){
                 setSettings('row');
                 
+                copyContent();
                 $('#modal-row').modal('hide');
             });
             
@@ -950,6 +964,7 @@
                 oCurrentElement.html(CKEDITOR.instances['text-content'].getData());
                 setSettings('text');
                 
+                copyContent();
                 $('#modal-text').modal('hide');
             });
             
@@ -958,6 +973,7 @@
                 
                 setSettings('image');
                 
+                copyContent();
                 $('#modal-image').modal('hide');
             });
             
@@ -1043,6 +1059,11 @@
                         oCurrentElement.attr(aAttributeName[i], aAttributeValue[i]);
                     }
                 }
+            }
+            
+            function copyContent()
+            {
+                $('#content_page').html($('#content-zone').html());
             }
         });
     </script> 

@@ -14,15 +14,15 @@ class PageRepository extends QueryBuilderRepository
     
     protected $aRelations = [
         'page_category',
-		'users',
-		'row'
+		'users'
     ];
 
     protected $aFillable = [
         'fk_page_category',
 		'fk_users',
 		'title_page',
-		'url_page'
+		'url_page',
+		'content_page'
     ];
     
    
@@ -34,11 +34,6 @@ class PageRepository extends QueryBuilderRepository
     public function users()
     {
         return $this->belongsTo('App\Repositories\UsersRepository', 'fk_users');
-    }
-
-    public function row()
-    {
-        return $this->hasMany('App\Repositories\RowRepository', 'fk_page');
     }
 
 

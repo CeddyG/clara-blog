@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+use Sentinel;
+
 class PageRequest extends FormRequest
 {
     /**
@@ -41,6 +43,7 @@ class PageRequest extends FormRequest
             'fk_users' => 'numeric',
             'title_page' => 'string|max:45',
             'url_page' => 'string|max:255',
+            'content_page' => '',
             'created_at' => 'string',
             'updated_at' => 'string'
         ];
