@@ -502,6 +502,11 @@
                 'template-content-data'
             ];
             
+            function buildModalRow()
+            {
+                buildSettings('row');
+            }
+            
             function buildModalCol()
             {
                 var aClass  = oCurrentElement.attr('class').split(' ');
@@ -509,8 +514,10 @@
                 var iSize   = 12;
                 var aSize   = ['xs', 'sm', 'md', 'lg'];
                 
+                buildSettings('col');
+                
                 //Size
-                for(var i = 0; i < aSize.length; i++)
+                for(var i = 0; i < 4; i++)
                 {
                     var sReg = new RegExp('col-'+aSize[i]+'-(\\d+)');
                     
@@ -537,7 +544,7 @@
                 }
                 
                 var iSize = 1;
-                for(var i = 0; i < aSize.length; i++)
+                for(var i = 0; i < 4; i++)
                 {
                     //Offset
                     if (oCurrentElement.is('[class*=col-'+aSize[i]+'-offset]'))
@@ -561,6 +568,110 @@
                     
                     $('#'+aSize[i]+'-offset').bootstrapSlider('setValue', parseInt(iSize), true);
                 }
+            }
+            
+            function buildModalText()
+            {
+                buildSettings('text');
+                CKEDITOR.instances['text-content'].setData(oCurrentElement.html());
+            }
+            
+            function buildSettings(sType)
+            {
+                $('#setting-'+sType).find('.setting-input-row').remove();
+                
+                var oSettingClass       = $('#setting-'+sType).find('.setting-class');
+                var oSettingStyle       = $('#setting-'+sType).find('.setting-style');
+                var oSettingAttribute   = $('#setting-'+sType).find('.setting-attribute');
+                
+                //Class
+                var aClass  = oCurrentElement.attr('class').split(' ');
+                var nbClass = aClass.length;
+                
+                for(var i = 0; i < nbClass; i++)
+                {
+                    if (aClassNoRemove.indexOf(aClass[i]) == -1 && !aClass[i].match(/(^|\s)col-\S+/g))
+                    {
+                        oSettingClass.append(buildClassSetting(aClass[i]));
+                    }
+                }
+                
+                //Style
+                var attr = oCurrentElement.attr('style');
+                
+                if (typeof attr !== typeof undefined && attr !== false) 
+                {
+                    var aStyle          = oCurrentElement.attr('style').split(';');
+                    var nbStyle         = aStyle.length;
+                    var aCurrentStyle   = [];
+
+                    for(var i = 0; i < nbStyle; i++)
+                    {
+                        aCurrentStyle = aStyle[i].split(':');
+                        if (aCurrentStyle[0] != '' && aCurrentStyle[1] != '')
+                        {
+                            oSettingStyle.append(buildStyleSetting(aCurrentStyle[0], aCurrentStyle[1]));
+                        }
+                    }
+                }
+                
+                //Attributes
+                oCurrentElement.each(function() {
+                    $.each(this.attributes,function(i,a){
+                        if (a.name != 'class' && a.name != 'style')
+                        {
+                            oSettingAttribute.append(buildAttributeSetting(a.name, a.value));                            
+                        }
+                    });
+                });
+            }
+            
+            function buildClassSetting(sClass)
+            {
+                return '<div class="row setting-input-row">'
+                    +'<div class="col col-xs-8">'
+                    +'<input value="'+sClass+'" class="form-control setting-input-class" type="text" />'
+                    +'</div>'
+                    +'<div class="col col-xs-4">'
+                    +'<button class="btn btn-danger del-setting" type="button">'
+                    +'<i class="glyphicon glyphicon-trash"></i>'
+                    +'</button>'
+                    +'</div>'
+                    +'</div>';
+            }
+            
+            function buildStyleSetting(sStyle, sValue)
+            {
+                return '<div class="row setting-input-row">'
+                    +'<div class="col col-xs-4">'
+                    +'<input value="'+sStyle+'" class="form-control setting-input-style" type="text" />'
+                    +'</div>'
+                    +'<div class="col col-xs-4">'
+                    +'<input value="'+sValue+'" class="form-control setting-input-style-value" type="text" />'
+                    +'</div>'
+                    +'<div class="col col-xs-4">'
+                    +'<button class="btn btn-danger del-setting" type="button">'
+                    +'<i class="glyphicon glyphicon-trash"></i>'
+                    +'</button>'
+                    +'</div>'
+                    +'</div>';
+            }
+            
+            function buildAttributeSetting(sAttribute, sValue)
+            {
+                return '<div class="row setting-input-row setting-attribute">'
+                    +'<div class="col col-xs-4">'
+                    +'<input value="'+sAttribute+'" class="form-control setting-input-attribute" type="text" />'
+                    +'</div>'
+                    +'<div class="col col-xs-4">'
+                    +'<input value="'+sValue+'" class="form-control setting-input-attribute-value" type="text" />'
+                    +'</div>'
+                    +'<div class="col col-xs-4">'
+                    +'<button class="btn btn-danger del-setting" type="button">'
+                    +'<i class="glyphicon glyphicon-trash"></i>'
+                    +'</button>'
+                    +'</div>'
+                    +'</div>';
             }
             
             $('.draggable').draggable({
@@ -608,6 +719,7 @@
                     return;
                 
                 oCurrentElement = $(this);
+                buildModalRow();
                 $('#modal-row').modal();
             });
 
@@ -628,7 +740,7 @@
                 
                 if ($(this).hasClass('template-content-text'))
                 {
-                    CKEDITOR.instances['text-content'].setData($(this).html());
+                    buildModalText();
                     $('#modal-text').modal();
                 }
                 
@@ -739,54 +851,15 @@
              * Editing settings
              */
             $('.add-line-class').on('click', function(){
-                $(this).parent().append(
-                    '<div class="row setting-input-row">'
-                    +'<div class="col col-xs-8">'
-                    +'<input value="" name="class[]" class="form-control setting-class" type="text" />'
-                    +'</div>'
-                    +'<div class="col col-xs-4">'
-                    +'<button class="btn btn-danger del-setting" type="button">'
-                    +'<i class="glyphicon glyphicon-trash"></i>'
-                    +'</button>'
-                    +'</div>'
-                    +'</div>'
-                );
+                $(this).parent().append(buildClassSetting(''));
             });
             
             $('.add-line-style').on('click', function(){
-                $(this).parent().append(
-                    '<div class="row setting-input-row">'
-                    +'<div class="col col-xs-4">'
-                    +'<input value="" name="style[]" class="form-control" type="text" />'
-                    +'</div>'
-                    +'<div class="col col-xs-4">'
-                    +'<input value="" name="style-value[]" class="form-control" type="text" />'
-                    +'</div>'
-                    +'<div class="col col-xs-4">'
-                    +'<button class="btn btn-danger del-setting" type="button">'
-                    +'<i class="glyphicon glyphicon-trash"></i>'
-                    +'</button>'
-                    +'</div>'
-                    +'</div>'
-                );
+                $(this).parent().append(buildStyleSetting('', ''));
             });
             
             $('.add-line-attribute').on('click', function(){
-                $(this).parent().append(
-                    '<div class="row setting-input-row">'
-                    +'<div class="col col-xs-4">'
-                    +'<input value="" name="attribute[]" class="form-control" type="text" />'
-                    +'</div>'
-                    +'<div class="col col-xs-4">'
-                    +'<input value="" name="attribute-value[]" class="form-control" type="text" />'
-                    +'</div>'
-                    +'<div class="col col-xs-4">'
-                    +'<button class="btn btn-danger del-setting" type="button">'
-                    +'<i class="glyphicon glyphicon-trash"></i>'
-                    +'</button>'
-                    +'</div>'
-                    +'</div>'
-                );
+                $(this).parent().append(buildAttributeSetting('', ''));
             });
             
             $('body').on('click', '.del-setting', function(){
@@ -835,6 +908,7 @@
             
             function setSettings(sType)
             {
+                //Class
                 var aClass = oCurrentElement.attr('class').split(' ');
                 
                 for(var i = 0; i < aClass.length; i++)
@@ -845,9 +919,66 @@
                     }
                 }
                 
-                $('#setting-'+sType).find('.setting-class').each(function(){
+                $('#setting-'+sType).find('.setting-input-class').each(function(){
                     oCurrentElement.addClass($(this).val());
                 });
+                
+                //Style
+                var aStyle          = [];
+                var aStyleName      = [];
+                var aStyleValue     = [];
+                $('#setting-'+sType).find('.setting-input-style').each(function(){
+                    aStyleName.push($(this).val());
+                });
+                
+                var nbStyle = aStyleName.length;
+                
+                $('#setting-'+sType).find('.setting-input-style-value').each(function(){
+                    aStyleValue.push($(this).val());
+                });
+                
+                for(var i = 0; i < nbStyle; i++)
+                {
+                    if (aStyleName[i] != '' && aStyleValue[i] != '')
+                    {
+                        aStyle.push(aStyleName[i]+': '+aStyleValue[i]);
+                    }
+                }
+                
+                if (aStyle.length > 0)
+                {
+                    oCurrentElement.attr('style', aStyle.join('; '));
+                }
+                
+                //Attribute
+                oCurrentElement.each(function() {
+                    $.each(this.attributes,function(i,a){
+                        if (a.name != 'class' && a.name != 'style')
+                        {
+                            oCurrentElement.removeAttr(a.name);                            
+                        }
+                    });
+                });
+                
+                var aAttributeName      = [];
+                var aAttributeValue     = [];
+                $('#setting-'+sType).find('.setting-input-attribute').each(function(){
+                    aAttributeName.push($(this).val());
+                });
+                
+                var nbAttribute = aAttributeName.length;
+                
+                $('#setting-'+sType).find('.setting-input-attribute-value').each(function(){
+                    aAttributeValue.push($(this).val());
+                });
+                
+                for(var i = 0; i < nbAttribute; i++)
+                {
+                    if (aAttributeName[i] != '' && aAttributeValue[i] != '')
+                    {
+                        oCurrentElement.attr(aAttributeName[i], aAttributeValue[i]);
+                    }
+                }
             }
         });
     </script> 
