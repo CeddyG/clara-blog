@@ -2,12 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Facades\App\Repositories\PageRepository;
 
 class PageController extends Controller
 {
-    public function index()
+    public function show($sSlug)
     {
-        return view('abricot/main');
+        $oPage = PageRepository::getFillFromView('abricot/page/show')
+            ->findByField('url_page', $sSlug)
+            ->first();
+        
+        if ($oPage !== null)
+        {
+            $sTitlePage = $oPage->title_page;
+
+            return view('abricot/page/show', compact('oPage', 'sTitlePage'));
+        }
+        else
+        {
+            abort(404);
+        }
     }
 }

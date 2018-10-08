@@ -15,9 +15,15 @@
 Route::get('login', 'Admin\UserController@login');
 Route::post('authenticate', 'Admin\UserController@authenticate');
 Route::get('logout', 'Admin\UserController@logout');
+
+//Home
 Route::get('/', 'NewsController@index');
+
+//News
 Route::get('news/{slug}', 'NewsController@show');
 
+//Pages
+Route::get('page/{slug}', 'PageController@show');
 
 //Admin
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'access'], function()
