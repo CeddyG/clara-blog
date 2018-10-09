@@ -192,7 +192,7 @@
                     <h3 class="box-title">{{ __('page.template') }}</h3>
                 </div>
                 <div class="box-body"> 
-                    <div class="col-sm-2 draggable template bg-navy" id="template-row">
+                    <div class="col-sm-2 template bg-navy" id="template-row">
                         LIGNE
                     </div>
 
@@ -723,40 +723,62 @@
                 revertDuration: 0
             });
             
-            $('#content-zone').droppable({
-                accept: "#template-row",
-                drop : function(){
-                    $(this).append('<div class="row"></div>');
-                    
-                    $('#content-zone > .row').droppable({
-                        accept: "#template-column",
-                        drop : function(){
-                            $(this).append('<div class="col col-xs-3 template-container"></div>');
-                            
-                            $('#content-zone > .row > .col').droppable({
-                                accept: ".template-content",
-                                drop : function(ev, template){
-                                    
-                                    switch (template.draggable.attr('id'))
-                                    {
-                                        case 'template-text':
-                                            $(this).append('<div class="template-content-render template-content-text"></div>');
-                                            break;
-                                        
-                                        case 'template-image':
-                                            $(this).append('<div class="template-content-render template-content-image"><img src="" /></div>');
-                                            break;
-                                        
-                                        case 'template-data':
-                                            $(this).append('<div class="template-content-render template-content-data"></div>');
-                                            break;
-                                    }                                    
-                                }
-                            });
-                        }
-                    });
-                }
+            $('#template-row').draggable({
+                connectToSortable: "#content-zone",
+                helper: "clone",
+                revert: "invalid"
             });
+            
+            $('#template-column').draggable({
+                connectToSortable: "#content-zone .row",
+                helper: "clone",
+                revert: "invalid"
+            });
+            
+            $('#content-zone').sortable({
+                revert: true,
+                update: function(event, ui) {
+                    if (!$(ui.item).hasClass('row'))
+                    {
+                        $(ui.item).html('');
+                        $(ui.item).attr('class', '');
+                        $(ui.item).removeAttr('style');
+                        $(ui.item).addClass('row');
+                        $(ui.item).sortable({
+                            revert: true,
+                            update: function(event, ui) {
+                                if (!$(ui.item).hasClass('col'))
+                                {
+                                    $(ui.item).html('');
+                                    $(ui.item).attr('class', '');
+                                    $(ui.item).removeAttr('style');
+                                    $(ui.item).addClass('col col-xs-3 template-container');
+                                    $(ui.item).droppable({
+                                        accept: ".template-content",
+                                        drop : function(ev, template){
+
+                                            switch (template.draggable.attr('id'))
+                                            {
+                                                case 'template-text':
+                                                    $(this).append('<div class="template-content-render template-content-text"></div>');
+                                                    break;
+
+                                                case 'template-image':
+                                                    $(this).append('<div class="template-content-render template-content-image"><img src="" /></div>');
+                                                    break;
+
+                                                case 'template-data':
+                                                    $(this).append('<div class="template-content-render template-content-data"></div>');
+                                                    break;
+                                            }                                    
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    }
+                }
+            }).disableSelection();
             
             $('#content-zone').on('click', '.row', function(e){
                 if (e.target !== this)
