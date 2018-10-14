@@ -25,30 +25,34 @@ class AdminNavbarServiceProvider extends ServiceProvider
             $sEntity    = isset($aAction[1]) ? $aAction[1] : '';
             
             $aConfigNavbar = config('clara.navbar');
+            $aNavbar = [];
             
-            $aNavbar = [
-                [
-                    'News',
-                    [
-                        ['title' => 'Liste', 'link' => route('admin.news.index'), 'active' => $sEntity == 'news'],
-                        ['title' => 'Catégorie', 'link' => route('admin.news-category.index'), 'active' => $sEntity == 'news-category'],
-                        ['title' => 'Tags', 'link' => route('admin.tag.index'), 'active' => $sEntity == 'tag']
-                    ]
-                ],
-                [
-                    'Pages',
-                    [
-                        ['title' => 'Liste', 'link' => route('admin.page.index'), 'active' => $sEntity == 'page'],
-                        ['title' => 'Catégorie', 'link' => route('admin.page-category.index'), 'active' => $sEntity == 'page-category']
-                    ]
-                ],
-            ];
-            
-            foreach ($aConfigNavbar as $sKey => $sTitle)
+            foreach ($aConfigNavbar as $sKey => $mTitle)
             {
                 if (Sentinel::hasAccess('admin.'.$sKey.'.index') && Route::has('admin.'.$sKey.'.index'))
                 {
-                    $aNavbar[] = ['title' => $sTitle, 'link' => route('admin.'.$sKey.'.index'), 'active' => $sEntity == $sKey];
+                    $aNavbar[] = [
+                        'title' => $mTitle, 
+                        'link' => route('admin.'.$sKey.'.index'), 'active' => $sEntity == $sKey
+                    ];
+                }
+                
+                if (is_array($mTitle))
+                {
+                    $aSubNav = [];
+                    
+                    foreach ($mTitle[1] as $sSubKey => $sSubTitle)
+                    {
+                        $aSubNav[] = [
+                            'title' => $sSubTitle, 
+                            'link' => route('admin.'.$sSubKey.'.index'), 'active' => $sEntity == $sSubKey
+                        ];
+                    }
+                    
+                    $aNavbar[] = [
+                        $mTitle[0], 
+                        $aSubNav
+                    ];
                 }
             }
             
