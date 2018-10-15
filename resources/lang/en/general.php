@@ -11,6 +11,9 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'yes'       => 'Yes',
+    'no'        => 'No',
+    'sign-out'  => 'Logout',
     'close'     => 'Close',
     'save'      => 'Save',
     'send'      => 'Send',

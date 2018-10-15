@@ -579,16 +579,16 @@
         },
         {
             "name": "ceddyg/clara-news",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CeddyG/clara-news.git",
-                "reference": "ca0002ee530ab760eb2289e2fbbd583c015aa1ba"
+                "reference": "597ace2f8770ee76f5f488842bff6348d2e8eeb2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CeddyG/clara-news/zipball/ca0002ee530ab760eb2289e2fbbd583c015aa1ba",
-                "reference": "ca0002ee530ab760eb2289e2fbbd583c015aa1ba",
+                "url": "https://api.github.com/repos/CeddyG/clara-news/zipball/597ace2f8770ee76f5f488842bff6348d2e8eeb2",
+                "reference": "597ace2f8770ee76f5f488842bff6348d2e8eeb2",
                 "shasum": ""
             },
             "require": {
@@ -623,20 +623,20 @@
                 "laravel",
                 "news"
             ],
-            "time": "2018-10-14T21:10:30+00:00"
+            "time": "2018-10-15T09:15:39+00:00"
         },
         {
             "name": "ceddyg/clara-page-builder",
-            "version": "1.0.3",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CeddyG/clara-page-builder.git",
-                "reference": "7576fb1a9a280839173d1c897412b2a83b406f39"
+                "reference": "1c05fd7e700f0fa5f921156243b6720f72744b74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CeddyG/clara-page-builder/zipball/7576fb1a9a280839173d1c897412b2a83b406f39",
-                "reference": "7576fb1a9a280839173d1c897412b2a83b406f39",
+                "url": "https://api.github.com/repos/CeddyG/clara-page-builder/zipball/1c05fd7e700f0fa5f921156243b6720f72744b74",
+                "reference": "1c05fd7e700f0fa5f921156243b6720f72744b74",
                 "shasum": ""
             },
             "require": {
@@ -673,7 +673,7 @@
                 "laravel",
                 "page"
             ],
-            "time": "2018-10-14T16:45:51+00:00"
+            "time": "2018-10-15T15:21:42+00:00"
         },
         {
             "name": "ceddyg/query-builder-repository",
@@ -2090,16 +2090,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.47",
+            "version": "1.0.48",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "a11e4a75f256bdacf99d20780ce42d3b8272975c"
+                "reference": "a6ded5b2f6055e2db97b4b859fdfca2b952b78aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a11e4a75f256bdacf99d20780ce42d3b8272975c",
-                "reference": "a11e4a75f256bdacf99d20780ce42d3b8272975c",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a6ded5b2f6055e2db97b4b859fdfca2b952b78aa",
+                "reference": "a6ded5b2f6055e2db97b4b859fdfca2b952b78aa",
                 "shasum": ""
             },
             "require": {
@@ -2170,7 +2170,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2018-09-14T15:30:29+00:00"
+            "time": "2018-10-15T13:53:10+00:00"
         },
         {
             "name": "maatwebsite/excel",
