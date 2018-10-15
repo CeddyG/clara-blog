@@ -17,7 +17,7 @@ Route::post('authenticate', 'Admin\UserController@authenticate');
 Route::get('logout', 'Admin\UserController@logout');
 
 //Home
-Route::get('/', 'NewsController@index');
+Route::get('/', 'HomeController@index');
 
 //Admin
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'access'], function()
