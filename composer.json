@@ -13,6 +13,7 @@
         "ceddyg/clara-dataflow": "^2.0.1",
         "ceddyg/clara-entity-generator": "^2.1.2",
         "ceddyg/clara-installer": "^2.0.3",
+        "ceddyg/clara-library": "^1.0",
         "ceddyg/clara-news": "^1.0",
         "ceddyg/clara-page-builder": "^1.0",
         "doctrine/dbal": "^2.7",

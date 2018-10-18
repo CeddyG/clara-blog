@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b59d4500b613a1f59d1fb7d6381e61da",
+    "content-hash": "83bfe458e2cecd027349251e3c74815f",
     "packages": [
         {
             "name": "adamwathan/form",
@@ -578,17 +578,69 @@
             "time": "2018-07-31T20:01:27+00:00"
         },
         {
-            "name": "ceddyg/clara-news",
-            "version": "1.1.0",
+            "name": "ceddyg/clara-library",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/CeddyG/clara-news.git",
-                "reference": "597ace2f8770ee76f5f488842bff6348d2e8eeb2"
+                "url": "https://github.com/CeddyG/clara-library.git",
+                "reference": "c5a15b4ad4bfc396d1878d5193f2748b73958ef0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CeddyG/clara-news/zipball/597ace2f8770ee76f5f488842bff6348d2e8eeb2",
-                "reference": "597ace2f8770ee76f5f488842bff6348d2e8eeb2",
+                "url": "https://api.github.com/repos/CeddyG/clara-library/zipball/c5a15b4ad4bfc396d1878d5193f2748b73958ef0",
+                "reference": "c5a15b4ad4bfc396d1878d5193f2748b73958ef0",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.1",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "CeddyG\\ClaraLibrary\\LibraryServiceProvider"
+                    ],
+                    "aliases": {
+                        "Library": "CeddyG\\ClaraLibrary\\Facades\\Library"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CeddyG\\ClaraLibrary\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "CeddyG"
+                }
+            ],
+            "description": "Library file manager for Clara.",
+            "keywords": [
+                "clara",
+                "file",
+                "laravel",
+                "library"
+            ],
+            "time": "2018-10-17T15:38:31+00:00"
+        },
+        {
+            "name": "ceddyg/clara-news",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CeddyG/clara-news.git",
+                "reference": "a3de59000e6939fcf737f9283fe0e2358a3fd2be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CeddyG/clara-news/zipball/a3de59000e6939fcf737f9283fe0e2358a3fd2be",
+                "reference": "a3de59000e6939fcf737f9283fe0e2358a3fd2be",
                 "shasum": ""
             },
             "require": {
@@ -623,7 +675,7 @@
                 "laravel",
                 "news"
             ],
-            "time": "2018-10-15T09:15:39+00:00"
+            "time": "2018-10-16T15:20:54+00:00"
         },
         {
             "name": "ceddyg/clara-page-builder",
@@ -5003,16 +5055,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "6.0.8",
+            "version": "6.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "848f78b3309780fef7ec8c4666b7ab4e6b09b22f"
+                "reference": "0685fb6a43aed1b2e09804d1aaf17144c82861f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/848f78b3309780fef7ec8c4666b7ab4e6b09b22f",
-                "reference": "848f78b3309780fef7ec8c4666b7ab4e6b09b22f",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/0685fb6a43aed1b2e09804d1aaf17144c82861f8",
+                "reference": "0685fb6a43aed1b2e09804d1aaf17144c82861f8",
                 "shasum": ""
             },
             "require": {
@@ -5036,7 +5088,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.0-dev"
+                    "dev-master": "6.1-dev"
                 }
             },
             "autoload": {
@@ -5062,7 +5114,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-10-04T03:41:23+00:00"
+            "time": "2018-10-16T05:37:37+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",

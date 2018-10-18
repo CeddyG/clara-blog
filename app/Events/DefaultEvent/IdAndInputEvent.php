@@ -22,7 +22,7 @@ class IdAndInputEvent
      * 
      * @return void
      */
-    public function __construct($id, array $aInputs)
+    public function __construct($id, array &$aInputs)
     {
         $this->id       = $id;
         $this->aInputs  = $aInputs;

@@ -76,7 +76,7 @@ class ContentManagerController extends Controller
         
         if ($this->sEventBeforeStore != '')
         {
-            event(new $this->sEventBeforeStore());
+            event(new $this->sEventBeforeStore($aInputs));
         }
         
         $id = $this->oRepository->create($aInputs);
@@ -129,7 +129,7 @@ class ContentManagerController extends Controller
         
         if ($this->sEventBeforeUpdate != '')
         {
-            event(new $this->sEventBeforeUpdate());
+            event(new $this->sEventBeforeUpdate($id, $aInputs));
         }
         
         $this->oRepository->update($id, $aInputs);
