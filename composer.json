@@ -12,6 +12,7 @@
         "ceddyg/bootforms": "^0.12.0",
         "ceddyg/clara-dataflow": "^2.0.1",
         "ceddyg/clara-entity-generator": "^2.1.2",
+        "ceddyg/clara-event": "^1.0",
         "ceddyg/clara-installer": "^2.0.3",
         "ceddyg/clara-library": "^1.0",
         "ceddyg/clara-news": "^1.0",

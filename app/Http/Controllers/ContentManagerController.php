@@ -21,7 +21,6 @@ class ContentManagerController extends Controller
     protected $sEventBeforeDestroy  = '';
     protected $sEventAfterDestroy   = '';
 
-
     /**
      * Display a listing of the resource.
      *
