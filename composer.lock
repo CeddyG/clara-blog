@@ -528,16 +528,16 @@
         },
         {
             "name": "ceddyg/clara-event",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CeddyG/clara-event.git",
-                "reference": "9a9cc34322323ae2f6d8989c9460303fd24d2974"
+                "reference": "09674ecd1f528db65595e27a5a557a75063e84df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CeddyG/clara-event/zipball/9a9cc34322323ae2f6d8989c9460303fd24d2974",
-                "reference": "9a9cc34322323ae2f6d8989c9460303fd24d2974",
+                "url": "https://api.github.com/repos/CeddyG/clara-event/zipball/09674ecd1f528db65595e27a5a557a75063e84df",
+                "reference": "09674ecd1f528db65595e27a5a557a75063e84df",
                 "shasum": ""
             },
             "require": {
@@ -573,7 +573,7 @@
                 "full-calendar",
                 "laravel"
             ],
-            "time": "2018-10-23T06:42:30+00:00"
+            "time": "2018-10-25T14:16:55+00:00"
         },
         {
             "name": "ceddyg/clara-installer",
@@ -4452,16 +4452,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.3.0",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "a9f129b99df316f847584d482c89c14a9f796e2b"
+                "reference": "bc0fd11bc455cc20ee4b5edabc63ebbf859324c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/a9f129b99df316f847584d482c89c14a9f796e2b",
-                "reference": "a9f129b99df316f847584d482c89c14a9f796e2b",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/bc0fd11bc455cc20ee4b5edabc63ebbf859324c7",
+                "reference": "bc0fd11bc455cc20ee4b5edabc63ebbf859324c7",
                 "shasum": ""
             },
             "require": {
@@ -4509,7 +4509,7 @@
                 "throwable",
                 "whoops"
             ],
-            "time": "2018-10-20T09:00:00+00:00"
+            "time": "2018-10-23T09:00:00+00:00"
         },
         {
             "name": "fzaninotto/faker",

@@ -20,15 +20,25 @@ class ContentManagerController extends Controller
     protected $sEventAfterUpdate    = '';
     protected $sEventBeforeDestroy  = '';
     protected $sEventAfterDestroy   = '';
+    
+    protected $sTypeRoute = 'web';
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $oRequest)
     {   
-        return view($this->sPath.'/index', ['sPageTitle' => $this->sName]);
+        if ($this->sTypeRoute == 'web')
+        {
+            return view($this->sPath.'/index', ['sPageTitle' => $this->sName]);
+        }
+        else
+        {
+            $this->oRepository->setReturnCollection(false);
+            return $this->oRepository->datatable($oRequest->all());
+        }
     }
     
     /**
@@ -85,7 +95,18 @@ class ContentManagerController extends Controller
             event(new $this->sEventAfterStore($id, $aInputs));
         }
         
-        return redirect($this->sPathRedirect)->withOk("L'objet a été créé.");
+        if ($this->sTypeRoute == 'web')
+        {
+            return redirect($this->sPathRedirect)->withOk("L'objet a été créé.");
+        }
+        else
+        {
+            return response()->json([
+                'message'   => 'Ok',
+                'id'        => $id,
+                'input'     => $aInputs
+            ], 200);
+        }
     }
 
     /**
@@ -137,8 +158,19 @@ class ContentManagerController extends Controller
         {
             event(new $this->sEventAfterUpdate($id, $aInputs));
         }
-
-        return redirect($this->sPathRedirect)->withOk("L'objet a été modifié.");
+        
+        if ($this->sTypeRoute == 'web')
+        {
+            return redirect($this->sPathRedirect)->withOk("L'objet a été modifié.");
+        }
+        else
+        {
+            return response()->json([
+                'message'   => 'Ok',
+                'id'        => $id,
+                'input'     => $aInputs
+            ], 200);
+        }        
     }
 
     /**
@@ -160,7 +192,18 @@ class ContentManagerController extends Controller
         {
             event(new $this->sEventAfterDestroy($id));
         }
-
-        return redirect($this->sPathRedirect)->withOk("L'objet a été supprimé.");
+        
+        if ($this->sTypeRoute == 'web')
+        {
+            return redirect($this->sPathRedirect)->withOk("L'objet a été supprimé.");
+        }
+        else
+        {
+            return response()->json([
+                'message'   => 'Ok',
+                'id'        => $id
+            ], 200);
+        }
+        
     }
 }
